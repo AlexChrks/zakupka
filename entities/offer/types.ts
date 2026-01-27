@@ -17,6 +17,9 @@ export interface OfferWithCompany extends Offer {
     id: string
     name: string
     location: string | null
+    contactPhone: string | null
+    contactEmail: string | null
+    contactPerson: string | null
   }
 }
 

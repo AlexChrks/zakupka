@@ -49,6 +49,9 @@ export interface RegisterData {
   companyDescription?: string
   industry?: string
   location?: string
+  contactPhone: string
+  contactEmail?: string
+  contactPerson?: string
   buyerEnabled: boolean
   supplierEnabled: boolean
 }
@@ -86,6 +89,9 @@ export async function register(data: RegisterData): Promise<RegisterResult> {
       p_company_description: data.companyDescription || null,
       p_industry: data.industry || null,
       p_location: data.location || null,
+      p_contact_phone: data.contactPhone,
+      p_contact_email: data.contactEmail || null,
+      p_contact_person: data.contactPerson || null,
       p_buyer_enabled: data.buyerEnabled,
       p_supplier_enabled: data.supplierEnabled,
       p_terms_version: TERMS_VERSION,

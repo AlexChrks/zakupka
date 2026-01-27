@@ -84,7 +84,7 @@ export async function listOffersForRFQ(
     .from('offers')
     .select(`
       *,
-      company:companies(id, name, location)
+      company:companies(id, name, location, contact_phone, contact_email, contact_person)
     `)
     .eq('rfq_id', rfqId)
     .is('deleted_at', null)
@@ -94,9 +94,24 @@ export async function listOffersForRFQ(
 
   return (rows || []).map((row) => {
     const offer = offerFromRow(row as OfferRow)
+    const companyData = row.company as {
+      id: string
+      name: string
+      location: string | null
+      contact_phone: string | null
+      contact_email: string | null
+      contact_person: string | null
+    }
     return {
       ...offer,
-      company: row.company as OfferWithCompany['company'],
+      company: {
+        id: companyData.id,
+        name: companyData.name,
+        location: companyData.location,
+        contactPhone: companyData.contact_phone,
+        contactEmail: companyData.contact_email,
+        contactPerson: companyData.contact_person,
+      },
     }
   })
 }

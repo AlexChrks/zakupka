@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { Bell, Package, FileText, Trophy } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
@@ -13,7 +14,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { Badge } from '@/components/ui/badge'
 import { createClient } from '@/shared/lib/supabase/client'
-import { getNotificationCounts } from '@/entities/notification/repo'
+import { getNotificationCounts, getRfqsWithNewOffers, getWonRfqs } from '@/entities/notification/repo'
 import { markOffersSeenAction, markRfqsSeenAction, markWinsSeenAction } from '../services/notification-actions'
 import Link from 'next/link'
 
@@ -24,6 +25,7 @@ interface NotificationBellProps {
 }
 
 export function NotificationBell({ userId, isBuyer, isSupplier }: NotificationBellProps) {
+  const router = useRouter()
   const [newOffers, setNewOffers] = useState(0)
   const [newRfqs, setNewRfqs] = useState(0)
   const [newWins, setNewWins] = useState(0)
@@ -48,9 +50,17 @@ export function NotificationBell({ userId, isBuyer, isSupplier }: NotificationBe
   }, [userId])
 
   const handleMarkOffersSeen = async () => {
+    // Fetch RFQ IDs with new offers for highlighting
+    const supabase = createClient()
+    const rfqIds = await getRfqsWithNewOffers(supabase, userId)
+    
     await markOffersSeenAction()
     setNewOffers(0)
     setIsOpen(false)
+    
+    // Navigate with highlight parameter
+    const url = rfqIds.length > 0 ? `/my-rfqs?highlight=${rfqIds.join(',')}` : '/my-rfqs'
+    router.push(url)
   }
 
   const handleMarkRfqsSeen = async () => {
@@ -60,9 +70,20 @@ export function NotificationBell({ userId, isBuyer, isSupplier }: NotificationBe
   }
 
   const handleMarkWinsSeen = async () => {
+    // Fetch RFQ IDs where supplier won for navigation
+    const supabase = createClient()
+    const wonRfqIds = await getWonRfqs(supabase, userId)
+    
     await markWinsSeenAction()
     setNewWins(0)
     setIsOpen(false)
+    
+    // Navigate to first won RFQ, or to RFQs list if none
+    if (wonRfqIds.length > 0) {
+      router.push(`/rfqs/${wonRfqIds[0]}`)
+    } else {
+      router.push('/rfqs')
+    }
   }
 
   // Don't show bell if user is neither buyer nor supplier
@@ -96,44 +117,38 @@ export function NotificationBell({ userId, isBuyer, isSupplier }: NotificationBe
         ) : (
           <>
             {isBuyer && newOffers > 0 && (
-              <DropdownMenuItem asChild>
-                <Link
-                  href="/my-rfqs"
-                  onClick={handleMarkOffersSeen}
-                  className="flex items-start gap-3 p-3 cursor-pointer"
-                >
-                  <div className="rounded-full bg-blue-100 p-2">
-                    <Package className="h-4 w-4 text-blue-600" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-sm font-medium">Новые предложения</p>
-                    <p className="text-xs text-muted-foreground">
-                      {newOffers} {getOffersWord(newOffers)} на ваши заявки
-                    </p>
-                  </div>
-                  <Badge variant="secondary">{newOffers}</Badge>
-                </Link>
+              <DropdownMenuItem
+                onClick={handleMarkOffersSeen}
+                className="flex items-start gap-3 p-3 cursor-pointer"
+              >
+                <div className="rounded-full bg-blue-100 p-2">
+                  <Package className="h-4 w-4 text-blue-600" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm font-medium">Новые предложения</p>
+                  <p className="text-xs text-muted-foreground">
+                    {newOffers} {getOffersWord(newOffers)} на ваши заявки
+                  </p>
+                </div>
+                <Badge variant="secondary">{newOffers}</Badge>
               </DropdownMenuItem>
             )}
 
             {isSupplier && newWins > 0 && (
-              <DropdownMenuItem asChild>
-                <Link
-                  href="/my-rfqs"
-                  onClick={handleMarkWinsSeen}
-                  className="flex items-start gap-3 p-3 cursor-pointer"
-                >
-                  <div className="rounded-full bg-yellow-100 p-2">
-                    <Trophy className="h-4 w-4 text-yellow-600" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-sm font-medium">Вы победили!</p>
-                    <p className="text-xs text-muted-foreground">
-                      {newWins} {getWinsWord(newWins)} выбрали ваше предложение
-                    </p>
-                  </div>
-                  <Badge variant="secondary" className="bg-yellow-100 text-yellow-800">{newWins}</Badge>
-                </Link>
+              <DropdownMenuItem
+                onClick={handleMarkWinsSeen}
+                className="flex items-start gap-3 p-3 cursor-pointer"
+              >
+                <div className="rounded-full bg-yellow-100 p-2">
+                  <Trophy className="h-4 w-4 text-yellow-600" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm font-medium">Вы победили!</p>
+                  <p className="text-xs text-muted-foreground">
+                    {newWins} {getWinsWord(newWins)} выбрали ваше предложение
+                  </p>
+                </div>
+                <Badge variant="secondary" className="bg-yellow-100 text-yellow-800">{newWins}</Badge>
               </DropdownMenuItem>
             )}
 

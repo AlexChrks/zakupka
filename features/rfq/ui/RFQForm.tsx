@@ -211,7 +211,7 @@ export function RFQForm({
                 name="budgetMin"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Минимальный бюджет (₽)</FormLabel>
+                    <FormLabel>Минимальный бюджет (BYN)</FormLabel>
                     <FormControl>
                       <Input
                         type="number"
@@ -235,7 +235,7 @@ export function RFQForm({
                 name="budgetMax"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Максимальный бюджет (₽)</FormLabel>
+                    <FormLabel>Максимальный бюджет (BYN)</FormLabel>
                     <FormControl>
                       <Input
                         type="number"

@@ -6,6 +6,9 @@ export const companySchema = z
     description: z.string().optional(),
     industry: z.string().optional(),
     location: z.string().optional(),
+    contactPhone: z.string().min(1, 'Укажите телефон для связи'),
+    contactEmail: z.string().email('Укажите корректный email').optional().or(z.literal('')),
+    contactPerson: z.string().optional(),
     buyerEnabled: z.boolean(),
     supplierEnabled: z.boolean(),
   })

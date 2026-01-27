@@ -19,6 +19,9 @@ interface AuthStore {
     description?: string
     industry?: string
     location?: string
+    contactPhone?: string
+    contactEmail?: string
+    contactPerson?: string
     buyerEnabled?: boolean
     supplierEnabled?: boolean
   }

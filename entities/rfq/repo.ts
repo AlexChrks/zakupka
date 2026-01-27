@@ -101,7 +101,7 @@ export async function getRFQById(
     .from('rfqs')
     .select(`
       *,
-      company:companies(id, name, location),
+      company:companies(id, name, location, contact_phone, contact_email, contact_person),
       category:categories(id, name, created_at)
     `)
     .eq('id', rfqId)
@@ -114,9 +114,25 @@ export async function getRFQById(
   }
 
   const rfq = rfqFromRow(row as RFQRow)
+  const companyData = row.company as {
+    id: string
+    name: string
+    location: string | null
+    contact_phone: string | null
+    contact_email: string | null
+    contact_person: string | null
+  } | null
+  
   return {
     ...rfq,
-    company: row.company as RFQWithRelations['company'],
+    company: companyData ? {
+      id: companyData.id,
+      name: companyData.name,
+      location: companyData.location,
+      contactPhone: companyData.contact_phone,
+      contactEmail: companyData.contact_email,
+      contactPerson: companyData.contact_person,
+    } : undefined,
     category: row.category ? categoryFromRow(row.category as CategoryRow) : null,
   }
 }

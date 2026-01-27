@@ -36,7 +36,6 @@ export function WinnerSection({
 }: WinnerSectionProps) {
   const isCompleted = rfq.status === 'completed'
   const isCancelled = rfq.status === 'cancelled'
-
   // Don't show anything if RFQ is still open
   if (rfq.status === 'open' && !winningOffer) {
     return null
@@ -84,6 +83,47 @@ export function WinnerSection({
             {winningOffer.notes && (
               <p className="mt-2 text-sm">{winningOffer.notes}</p>
             )}
+          </div>
+
+          {/* Contact information for supplier */}
+          <div className="rounded-lg border border-blue-200 bg-blue-50/50 p-4 dark:border-blue-800 dark:bg-blue-950/20">
+            <h4 className="font-medium mb-3 flex items-center gap-2">
+              <Phone className="h-4 w-4 text-blue-600" />
+              Контакты поставщика
+            </h4>
+            {(() => {
+              const hasContactPhone = winningOffer.company.contactPhone && winningOffer.company.contactPhone.trim() !== ''
+              const hasContactEmail = winningOffer.company.contactEmail && winningOffer.company.contactEmail.trim() !== ''
+              const hasContactPerson = winningOffer.company.contactPerson && winningOffer.company.contactPerson.trim() !== ''
+              
+              return (hasContactPhone || hasContactEmail || hasContactPerson) ? (
+                <div className="space-y-2 text-sm">
+                  {hasContactPerson && (
+                    <p className="font-medium">{winningOffer.company.contactPerson}</p>
+                  )}
+                  {hasContactPhone && (
+                    <div className="flex items-center gap-2">
+                      <Phone className="h-3 w-3 text-muted-foreground" />
+                      <a href={`tel:${winningOffer.company.contactPhone}`} className="text-blue-600 hover:underline">
+                        {winningOffer.company.contactPhone}
+                      </a>
+                    </div>
+                  )}
+                  {hasContactEmail && (
+                    <div className="flex items-center gap-2">
+                      <Mail className="h-3 w-3 text-muted-foreground" />
+                      <a href={`mailto:${winningOffer.company.contactEmail}`} className="text-blue-600 hover:underline">
+                        {winningOffer.company.contactEmail}
+                      </a>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <p className="text-sm text-muted-foreground">
+                  Контактная информация не указана поставщиком
+                </p>
+              )
+            })()}
           </div>
 
           <div className="rounded-lg border border-dashed p-4">
@@ -145,12 +185,53 @@ export function WinnerSection({
             </div>
           </div>
 
+          {/* Contact information for buyer */}
+          <div className="rounded-lg border border-blue-200 bg-blue-50/50 p-4 dark:border-blue-800 dark:bg-blue-950/20">
+            <h4 className="font-medium mb-3 flex items-center gap-2">
+              <Phone className="h-4 w-4 text-blue-600" />
+              Контакты покупателя
+            </h4>
+            {(() => {
+              const hasContactPhone = rfq.company?.contactPhone && rfq.company.contactPhone.trim() !== ''
+              const hasContactEmail = rfq.company?.contactEmail && rfq.company.contactEmail.trim() !== ''
+              const hasContactPerson = rfq.company?.contactPerson && rfq.company.contactPerson.trim() !== ''
+              
+              return (hasContactPhone || hasContactEmail || hasContactPerson) ? (
+                <div className="space-y-2 text-sm">
+                  {hasContactPerson && rfq.company?.contactPerson && (
+                    <p className="font-medium">{rfq.company.contactPerson}</p>
+                  )}
+                  {hasContactPhone && rfq.company?.contactPhone && (
+                    <div className="flex items-center gap-2">
+                      <Phone className="h-3 w-3 text-muted-foreground" />
+                      <a href={`tel:${rfq.company.contactPhone}`} className="text-blue-600 hover:underline">
+                        {rfq.company.contactPhone}
+                      </a>
+                    </div>
+                  )}
+                  {hasContactEmail && rfq.company?.contactEmail && (
+                    <div className="flex items-center gap-2">
+                      <Mail className="h-3 w-3 text-muted-foreground" />
+                      <a href={`mailto:${rfq.company.contactEmail}`} className="text-blue-600 hover:underline">
+                        {rfq.company.contactEmail}
+                      </a>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <p className="text-sm text-muted-foreground">
+                  Контактная информация не указана покупателем
+                </p>
+              )
+            })()}
+          </div>
+
           <div className="rounded-lg border border-dashed p-4">
             <h4 className="font-medium mb-2">Следующие шаги:</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="h-4 w-4 mt-0.5 text-green-600" />
-                <span>Дождитесь контакта от покупателя</span>
+                <span>Свяжитесь с покупателем для уточнения деталей</span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="h-4 w-4 mt-0.5 text-green-600" />

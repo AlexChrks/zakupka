@@ -38,6 +38,9 @@ export function RegisterWizard() {
     description?: string
     industry?: string
     location?: string
+    contactPhone: string
+    contactEmail?: string
+    contactPerson?: string
     buyerEnabled: boolean
     supplierEnabled: boolean
   }) => {
@@ -57,6 +60,9 @@ export function RegisterWizard() {
       companyDescription: registrationData.description,
       industry: registrationData.industry,
       location: registrationData.location,
+      contactPhone: registrationData.contactPhone!,
+      contactEmail: registrationData.contactEmail,
+      contactPerson: registrationData.contactPerson,
       buyerEnabled: registrationData.buyerEnabled ?? false,
       supplierEnabled: registrationData.supplierEnabled ?? false,
     }
@@ -123,6 +129,9 @@ export function RegisterWizard() {
               description: registrationData.description || '',
               industry: registrationData.industry || '',
               location: registrationData.location || '',
+              contactPhone: registrationData.contactPhone || '',
+              contactEmail: registrationData.contactEmail || '',
+              contactPerson: registrationData.contactPerson || '',
               buyerEnabled: registrationData.buyerEnabled ?? false,
               supplierEnabled: registrationData.supplierEnabled ?? false,
             }}

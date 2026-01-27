@@ -27,6 +27,9 @@ export interface RFQWithRelations extends RFQ {
     id: string
     name: string
     location: string | null
+    contactPhone: string | null
+    contactEmail: string | null
+    contactPerson: string | null
   }
   category?: Category | null
   offersCount?: number

@@ -20,14 +20,14 @@ export function DashboardContent({ company, rfqs, user }: DashboardContentProps)
   const openRFQs = rfqs.filter((rfq) => rfq.status === 'open')
   const completedRFQs = rfqs.filter((rfq) => rfq.status === 'completed')
 
-  const firstName = user.user_metadata?.full_name?.split(' ')[0] || 'Пользователь'
+  const fullName = user.user_metadata?.full_name || 'Пользователь'
 
   return (
     <div className="space-y-6">
       {/* Welcome Section */}
       <div>
         <h1 className="text-2xl font-bold tracking-tight md:text-3xl">
-          С возвращением, {firstName}!
+          С возвращением, {fullName}!
         </h1>
         <p className="text-muted-foreground">
           Обзор вашей активности на платформе Закупка

@@ -42,3 +42,21 @@ export async function markWinsAsSeen(
   const { error } = await supabase.rpc('mark_wins_seen', { p_user_id: userId })
   if (error) throw error
 }
+
+export async function getRfqsWithNewOffers(
+  supabase: SupabaseClient,
+  userId: string
+): Promise<string[]> {
+  const { data, error } = await supabase.rpc('get_rfqs_with_new_offers', { p_user_id: userId })
+  if (error) throw error
+  return (data as { rfq_id: string }[])?.map((row) => row.rfq_id) || []
+}
+
+export async function getWonRfqs(
+  supabase: SupabaseClient,
+  userId: string
+): Promise<string[]> {
+  const { data, error } = await supabase.rpc('get_won_rfqs', { p_user_id: userId })
+  if (error) throw error
+  return (data as { rfq_id: string }[])?.map((row) => row.rfq_id) || []
+}

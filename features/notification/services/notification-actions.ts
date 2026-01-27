@@ -1,7 +1,7 @@
 'use server'
 
 import { createClient } from '@/shared/lib/supabase/server'
-import { markOffersAsSeen, markRfqsAsSeen, markWinsAsSeen } from '@/entities/notification/repo'
+import { markOffersAsSeen, markRfqsAsSeen, markWinsAsSeen, getRfqsWithNewOffers } from '@/entities/notification/repo'
 
 export async function markOffersSeenAction() {
   const supabase = await createClient()
@@ -40,4 +40,17 @@ export async function markWinsSeenAction() {
   }
 
   await markWinsAsSeen(supabase, user.id)
+}
+
+export async function getRfqsWithNewOffersAction(): Promise<string[]> {
+  const supabase = await createClient()
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+
+  if (!user) {
+    return []
+  }
+
+  return getRfqsWithNewOffers(supabase, user.id)
 }

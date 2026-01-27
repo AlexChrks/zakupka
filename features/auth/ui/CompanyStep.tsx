@@ -24,6 +24,9 @@ interface CompanyStepProps {
     description?: string
     industry?: string
     location?: string
+    contactPhone: string
+    contactEmail?: string
+    contactPerson?: string
     buyerEnabled: boolean
     supplierEnabled: boolean
   }) => void
@@ -38,6 +41,9 @@ export function CompanyStep({ defaultValues, onSubmit, onBack }: CompanyStepProp
       description: defaultValues.description || '',
       industry: defaultValues.industry || '',
       location: defaultValues.location || '',
+      contactPhone: defaultValues.contactPhone || '',
+      contactEmail: defaultValues.contactEmail || '',
+      contactPerson: defaultValues.contactPerson || '',
       buyerEnabled: defaultValues.buyerEnabled ?? false,
       supplierEnabled: defaultValues.supplierEnabled ?? false,
     },
@@ -49,6 +55,9 @@ export function CompanyStep({ defaultValues, onSubmit, onBack }: CompanyStepProp
       description: values.description,
       industry: values.industry,
       location: values.location,
+      contactPhone: values.contactPhone,
+      contactEmail: values.contactEmail,
+      contactPerson: values.contactPerson,
       buyerEnabled: values.buyerEnabled,
       supplierEnabled: values.supplierEnabled,
     })
@@ -111,12 +120,63 @@ export function CompanyStep({ defaultValues, onSubmit, onBack }: CompanyStepProp
               <FormItem>
                 <FormLabel>Местоположение</FormLabel>
                 <FormControl>
-                  <Input placeholder="напр., Москва" {...field} />
+                  <Input placeholder="Гомель" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
+        </div>
+
+        <div className="space-y-3 rounded-lg border p-4">
+          <FormLabel className="text-base">Контактная информация *</FormLabel>
+          <FormDescription>
+            Эти данные будут видны контрагентам после заключения сделки
+          </FormDescription>
+
+          <FormField
+            control={form.control}
+            name="contactPhone"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Телефон для связи *</FormLabel>
+                <FormControl>
+                  <Input placeholder="+375 (XX) XXX-XX-XX" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <FormField
+              control={form.control}
+              name="contactEmail"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email для связи</FormLabel>
+                  <FormControl>
+                    <Input type="email" placeholder="contact@company.by" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="contactPerson"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Контактное лицо</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Иванов Иван Иванович" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
         </div>
 
         <div className="space-y-3 rounded-lg border p-4">

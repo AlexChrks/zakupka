@@ -159,3 +159,47 @@ BEGIN
   DO UPDATE SET last_rfqs_seen_at = now();
 END;
 $$ LANGUAGE plpgsql;
+
+-- Get RFQ IDs with new offers (for highlighting)
+CREATE OR REPLACE FUNCTION get_rfqs_with_new_offers(p_user_id UUID)
+RETURNS TABLE(rfq_id UUID)
+SECURITY DEFINER
+SET search_path = public
+AS $$
+DECLARE
+  v_company_id UUID;
+  v_last_seen TIMESTAMPTZ;
+BEGIN
+  -- Get user's buyer company
+  SELECT cm.company_id INTO v_company_id
+  FROM company_members cm
+  JOIN companies c ON c.id = cm.company_id
+  WHERE cm.user_id = p_user_id 
+    AND c.buyer_enabled = true 
+    AND c.deleted_at IS NULL
+  LIMIT 1;
+  
+  IF v_company_id IS NULL THEN
+    RETURN;
+  END IF;
+  
+  -- Get last seen timestamp
+  SELECT last_offers_seen_at INTO v_last_seen
+  FROM user_notification_state
+  WHERE user_id = p_user_id;
+  
+  IF v_last_seen IS NULL THEN
+    v_last_seen := '1970-01-01'::TIMESTAMPTZ;
+  END IF;
+  
+  -- Return distinct RFQ IDs with new offers
+  RETURN QUERY
+  SELECT DISTINCT r.id
+  FROM offers o
+  JOIN rfqs r ON r.id = o.rfq_id
+  WHERE r.company_id = v_company_id
+    AND r.deleted_at IS NULL
+    AND o.deleted_at IS NULL
+    AND o.created_at > v_last_seen;
+END;
+$$ LANGUAGE plpgsql;

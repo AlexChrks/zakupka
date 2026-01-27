@@ -32,6 +32,9 @@ CREATE TABLE companies (
   description TEXT,
   industry TEXT,
   location TEXT,
+  contact_phone TEXT,
+  contact_email TEXT,
+  contact_person TEXT,
   buyer_enabled BOOLEAN NOT NULL DEFAULT false,
   supplier_enabled BOOLEAN NOT NULL DEFAULT false,
   deleted_at TIMESTAMPTZ,
@@ -483,6 +486,9 @@ CREATE OR REPLACE FUNCTION complete_registration(
   p_company_description TEXT DEFAULT NULL,
   p_industry TEXT DEFAULT NULL,
   p_location TEXT DEFAULT NULL,
+  p_contact_phone TEXT DEFAULT NULL,
+  p_contact_email TEXT DEFAULT NULL,
+  p_contact_person TEXT DEFAULT NULL,
   p_buyer_enabled BOOLEAN DEFAULT false,
   p_supplier_enabled BOOLEAN DEFAULT false,
   p_terms_version TEXT DEFAULT '1.0'
@@ -495,8 +501,8 @@ DECLARE
   v_company_id UUID;
 BEGIN
   -- Create company
-  INSERT INTO companies (name, description, industry, location, buyer_enabled, supplier_enabled)
-  VALUES (p_company_name, p_company_description, p_industry, p_location, p_buyer_enabled, p_supplier_enabled)
+  INSERT INTO companies (name, description, industry, location, contact_phone, contact_email, contact_person, buyer_enabled, supplier_enabled)
+  VALUES (p_company_name, p_company_description, p_industry, p_location, p_contact_phone, p_contact_email, p_contact_person, p_buyer_enabled, p_supplier_enabled)
   RETURNING id INTO v_company_id;
 
   -- Add user as company owner

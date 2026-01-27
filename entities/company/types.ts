@@ -6,6 +6,9 @@ export interface Company {
   description: string | null
   industry: string | null
   location: string | null
+  contactPhone: string | null
+  contactEmail: string | null
+  contactPerson: string | null
   buyerEnabled: boolean
   supplierEnabled: boolean
   deletedAt: string | null
@@ -32,6 +35,9 @@ export interface CompanyRow {
   description: string | null
   industry: string | null
   location: string | null
+  contact_phone: string | null
+  contact_email: string | null
+  contact_person: string | null
   buyer_enabled: boolean
   supplier_enabled: boolean
   deleted_at: string | null
@@ -55,6 +61,9 @@ export function companyFromRow(row: CompanyRow): Company {
     description: row.description,
     industry: row.industry,
     location: row.location,
+    contactPhone: row.contact_phone,
+    contactEmail: row.contact_email,
+    contactPerson: row.contact_person,
     buyerEnabled: row.buyer_enabled,
     supplierEnabled: row.supplier_enabled,
     deletedAt: row.deleted_at,

@@ -54,8 +54,8 @@ export function OffersTable({ offers, rfqId, canSelectWinner }: OffersTableProps
   })
 
   return (
-    <div className="rounded-md border">
-      <Table>
+    <div className="rounded-md border overflow-x-auto">
+      <Table className="min-w-[600px]">
         <TableHeader>
           <TableRow>
             <TableHead>Поставщик</TableHead>
@@ -100,6 +100,7 @@ export function OffersTable({ offers, rfqId, canSelectWinner }: OffersTableProps
                     variant="outline"
                     onClick={() => handleSelectWinner(offer)}
                     disabled={selectWinner.isPending}
+                    className="min-h-[44px] min-w-[44px]"
                   >
                     {selectWinner.isPending ? (
                       <Loader2 className="h-4 w-4 animate-spin" />

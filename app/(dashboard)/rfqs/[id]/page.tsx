@@ -56,11 +56,15 @@ export default async function RFQDetailPage({ params }: RFQDetailPageProps) {
   let offers = null
   let myOffer = null
 
+  // Always load all offers to find the winning offer (needed for WinnerSection)
+  const allOffers = await listOffersForRFQ(supabase, id)
+  
   if (isBuyer) {
     // Buyer sees all offers
-    offers = await listOffersForRFQ(supabase, id)
+    offers = allOffers
   } else if (userCompany?.supplierEnabled) {
-    // Supplier sees only their offer
+    // Supplier sees only their offer in the UI, but we need all offers to find winner
+    offers = allOffers // Keep all offers for winner detection
     myOffer = await getMyOfferForRFQ(supabase, id, userCompany.id)
   }
 
