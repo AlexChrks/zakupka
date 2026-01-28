@@ -19,8 +19,9 @@ import {
 } from '@/components/ui/table'
 import { formatDate, formatRelativeDate } from '@/shared/lib/utils'
 import { RFQStatusBadge } from './RFQStatusBadge'
-import { FileX, Edit, RefreshCw } from 'lucide-react'
+import { FileX, Edit, RefreshCw, Calendar } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 interface MyRFQsListProps {
   initialRFQs: RFQWithRelations[]
@@ -130,81 +131,143 @@ export function MyRFQsList({ initialRFQs }: MyRFQsListProps) {
           )}
         </div>
       ) : (
-        <div className="rounded-md border overflow-x-auto">
-          <Table className="min-w-[500px]">
-            <TableHeader>
-              <TableRow>
-                <TableHead>Название</TableHead>
-                <TableHead className="hidden sm:table-cell">Категория</TableHead>
-                <TableHead className="hidden md:table-cell">Срок</TableHead>
-                <TableHead>Статус</TableHead>
-                <TableHead className="hidden sm:table-cell">Предл.</TableHead>
-                <TableHead className="text-right">Действия</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {filteredRFQs.map((rfq, index) => {
-                const isHighlighted = highlightedIds.includes(rfq.id)
-                const isFirstHighlighted = isHighlighted && highlightedIds[0] === rfq.id
-                
-                return (
-                <TableRow 
+        <>
+          {/* Mobile: Card view */}
+          <div className="space-y-3 md:hidden">
+            {filteredRFQs.map((rfq) => {
+              const isHighlighted = highlightedIds.includes(rfq.id)
+              const isFirstHighlighted = isHighlighted && highlightedIds[0] === rfq.id
+              
+              return (
+                <Card
                   key={rfq.id}
                   ref={isFirstHighlighted ? highlightedRowRef : undefined}
                   onClick={() => router.push(`/rfqs/${rfq.id}`)}
                   className={cn(
-                    'cursor-pointer hover:bg-muted/50',
-                    isHighlighted && 'bg-blue-50 border-l-4 border-l-blue-500 animate-pulse'
+                    'cursor-pointer transition-shadow hover:shadow-md',
+                    isHighlighted && 'ring-2 ring-blue-500 bg-blue-50 animate-pulse'
                   )}
                 >
-                  <TableCell>
-                    <span className="font-medium">{rfq.title}</span>
-                    <p className="mt-1 text-xs text-muted-foreground md:hidden">
-                      {formatRelativeDate(rfq.deadline)}
-                    </p>
-                  </TableCell>
-                  <TableCell className="hidden sm:table-cell">
-                    {rfq.category ? (
-                      <Badge variant="secondary">{rfq.category.name}</Badge>
-                    ) : (
-                      <span className="text-muted-foreground">-</span>
+                  <CardHeader className="pb-3">
+                    <div className="flex items-start justify-between gap-2">
+                      <CardTitle className="text-base font-medium line-clamp-2 flex-1">
+                        {rfq.title}
+                      </CardTitle>
+                      <RFQStatusBadge status={rfq.status} />
+                    </div>
+                    {rfq.category && (
+                      <Badge variant="secondary" className="w-fit mt-2">
+                        {rfq.category.name}
+                      </Badge>
                     )}
-                  </TableCell>
-                  <TableCell className="hidden md:table-cell">
-                    <span
-                      className={
-                        new Date(rfq.deadline) < new Date() ? 'text-destructive' : ''
-                      }
-                    >
-                      {formatDate(rfq.deadline)}
-                    </span>
-                  </TableCell>
-                  <TableCell>
-                    <RFQStatusBadge status={rfq.status} />
-                  </TableCell>
-                  <TableCell className="hidden sm:table-cell">
-                    <Badge variant="outline">{rfq.offersCount || 0}</Badge>
-                  </TableCell>
-                  <TableCell className="text-right">
-                    {rfq.status === 'open' && (
+                  </CardHeader>
+                  <CardContent className="flex flex-col items-start gap-2 pt-0">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Calendar className="h-4 w-4" />
+                      <span className={new Date(rfq.deadline) < new Date() ? 'text-destructive' : ''}>
+                        {formatRelativeDate(rfq.deadline)}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Badge variant="outline">
+                        {rfq.offersCount || 0} предложени{(rfq.offersCount || 0) === 1 ? 'е' : (rfq.offersCount || 0) >= 2 && (rfq.offersCount || 0) <= 4 ? 'я' : 'й'}
+                      </Badge>
+                    </div>
+                  </CardContent>
+                  {rfq.status === 'open' && (
+                    <div className="px-6 pb-4">
                       <Button 
                         size="sm" 
-                        variant="ghost"
+                        variant="outline"
                         onClick={(e) => {
                           e.stopPropagation()
                           router.push(`/my-rfqs/${rfq.id}/edit`)
                         }}
+                        className="w-full"
                       >
-                        <Edit className="h-4 w-4" />
+                        <Edit className="mr-2 h-4 w-4" />
+                        Редактировать
                       </Button>
-                    )}
-                  </TableCell>
+                    </div>
+                  )}
+                </Card>
+              )
+            })}
+          </div>
+
+          {/* Desktop: Table view */}
+          <div className="hidden md:block rounded-md border overflow-x-auto">
+            <Table className="min-w-[500px]">
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Название</TableHead>
+                  <TableHead className="hidden sm:table-cell">Категория</TableHead>
+                  <TableHead className="hidden md:table-cell">Срок</TableHead>
+                  <TableHead>Статус</TableHead>
+                  <TableHead className="hidden sm:table-cell">Предл.</TableHead>
+                  <TableHead className="text-right">Действия</TableHead>
                 </TableRow>
-                )
-              })}
-            </TableBody>
-          </Table>
-        </div>
+              </TableHeader>
+              <TableBody>
+                {filteredRFQs.map((rfq, index) => {
+                  const isHighlighted = highlightedIds.includes(rfq.id)
+                  const isFirstHighlighted = isHighlighted && highlightedIds[0] === rfq.id
+                  
+                  return (
+                  <TableRow 
+                    key={rfq.id}
+                    onClick={() => router.push(`/rfqs/${rfq.id}`)}
+                    className={cn(
+                      'cursor-pointer hover:bg-muted/50',
+                      isHighlighted && 'bg-blue-50 border-l-4 border-l-blue-500 animate-pulse'
+                    )}
+                  >
+                    <TableCell>
+                      <span className="font-medium">{rfq.title}</span>
+                    </TableCell>
+                    <TableCell className="hidden sm:table-cell">
+                      {rfq.category ? (
+                        <Badge variant="secondary">{rfq.category.name}</Badge>
+                      ) : (
+                        <span className="text-muted-foreground">-</span>
+                      )}
+                    </TableCell>
+                    <TableCell className="hidden md:table-cell">
+                      <span
+                        className={
+                          new Date(rfq.deadline) < new Date() ? 'text-destructive' : ''
+                        }
+                      >
+                        {formatDate(rfq.deadline)}
+                      </span>
+                    </TableCell>
+                    <TableCell>
+                      <RFQStatusBadge status={rfq.status} />
+                    </TableCell>
+                    <TableCell className="hidden sm:table-cell">
+                      <Badge variant="outline">{rfq.offersCount || 0}</Badge>
+                    </TableCell>
+                    <TableCell className="text-right">
+                      {rfq.status === 'open' && (
+                        <Button 
+                          size="sm" 
+                          variant="ghost"
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            router.push(`/my-rfqs/${rfq.id}/edit`)
+                          }}
+                        >
+                          <Edit className="h-4 w-4" />
+                        </Button>
+                      )}
+                    </TableCell>
+                  </TableRow>
+                  )
+                })}
+              </TableBody>
+            </Table>
+          </div>
+        </>
       )}
     </div>
   )

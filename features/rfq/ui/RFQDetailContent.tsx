@@ -47,7 +47,7 @@ export function RFQDetailContent({
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <div className="flex items-center gap-3">
-            <h1 className="text-2xl font-bold tracking-tight md:text-3xl">{rfq.title}</h1>
+            <h1 className="text-2xl font-bold tracking-tight text-primary md:text-3xl">{rfq.title}</h1>
             <RFQStatusBadge status={rfq.status} />
           </div>
           {rfq.company && (

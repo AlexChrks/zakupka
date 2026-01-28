@@ -62,10 +62,22 @@ function CardAction({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 function CardContent({ className, ...props }: React.ComponentProps<"div">) {
+  // Проверяем, есть ли уже flex в className (flex, flex-1, flex-col и т.д.)
+  const hasFlexClass = className?.includes('flex')
+  
   return (
     <div
       data-slot="card-content"
-      className={cn("px-6", className)}
+      className={cn(
+        "px-6",
+        // На мобильных: flex-direction column, align-items left
+        // Если flex уже есть в className, добавляем только направление
+        // Если нет - добавляем flex и направление
+        hasFlexClass 
+          ? "flex-col items-start md:flex-row md:items-center"
+          : "flex flex-col items-start md:block",
+        className
+      )}
       {...props}
     />
   )

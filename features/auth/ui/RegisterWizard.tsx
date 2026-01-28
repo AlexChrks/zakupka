@@ -86,7 +86,7 @@ export function RegisterWizard() {
   return (
     <Card className="w-full max-w-lg">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl font-bold">Регистрация</CardTitle>
+        <CardTitle className="text-2xl font-bold text-primary">Регистрация</CardTitle>
         <CardDescription>
           Шаг {registrationStep} из {STEPS.length}: {STEPS[registrationStep - 1]}
         </CardDescription>

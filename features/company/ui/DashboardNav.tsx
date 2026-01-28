@@ -46,7 +46,7 @@ export function DashboardNav({ company }: DashboardNavProps) {
     <nav className="hidden w-64 border-r bg-muted/40 md:block">
       <div className="flex h-full flex-col gap-2 p-4">
         <div className="py-2">
-          <h2 className="mb-2 px-2 text-lg font-semibold tracking-tight">Навигация</h2>
+          <h2 className="mb-2 px-2 text-lg font-semibold tracking-tight text-primary">Навигация</h2>
           <div className="space-y-1">
             {visibleItems.map((item) => (
               <Link

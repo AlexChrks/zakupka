@@ -17,7 +17,7 @@ import { logout } from '@/features/auth/services/auth-actions'
 import Link from 'next/link'
 import { MobileNav } from './MobileNav'
 import { NotificationBell } from '@/features/notification/ui'
-
+import Image from 'next/image'
 interface DashboardHeaderProps {
   user: User
   company: Company
@@ -37,8 +37,7 @@ export function DashboardHeader({ user, company }: DashboardHeaderProps) {
         <div className="flex items-center gap-4">
           <MobileNav company={company} />
           <Link href="/dashboard" className="flex items-center gap-2 font-semibold">
-            <Building2 className="h-6 w-6 text-primary" />
-            <span className="hidden sm:inline">Закупка</span>
+            <Image className="mt-2" src="/logo_with_text.png" alt="Закупка" width={190} height={40} />
           </Link>
         </div>
 
