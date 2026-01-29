@@ -9,7 +9,8 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { FileText, Package, PlusCircle, ArrowRight, Clock, CheckCircle2 } from 'lucide-react'
 import { formatRelativeDate } from '@/shared/lib/utils'
-
+import { cn } from "@/lib/utils"
+import { useRouter } from 'next/navigation'
 interface DashboardContentProps {
   company: Company
   rfqs: RFQWithRelations[]
@@ -19,9 +20,8 @@ interface DashboardContentProps {
 export function DashboardContent({ company, rfqs, user }: DashboardContentProps) {
   const openRFQs = rfqs.filter((rfq) => rfq.status === 'open')
   const completedRFQs = rfqs.filter((rfq) => rfq.status === 'completed')
-
   const fullName = user.user_metadata?.full_name || 'Пользователь'
-
+  const router = useRouter()
   return (
     <div className="space-y-6">
       {/* Welcome Section */}
@@ -140,17 +140,18 @@ export function DashboardContent({ company, rfqs, user }: DashboardContentProps)
 
       {/* Recent RFQs (for buyers) */}
       {company.buyerEnabled && openRFQs.length > 0 && (
-        <Card>
+        <Card className="max-w-[700px]">
           <CardHeader>
             <CardTitle>Ваши недавние запросы</CardTitle>
             <CardDescription>Последние открытые запросы</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
+            <div className="space-y-4 w-full ">
               {openRFQs.slice(0, 5).map((rfq) => (
                 <div
+                onClick={() => router.push(`/rfqs/${rfq.id}`)}
                   key={rfq.id}
-                  className="flex items-center justify-between rounded-lg border p-4"
+                  className="flex items-center justify-between rounded-lg border p-4 flex-col md:flex-row items-start md:items-center cursor-pointer hover:bg-gray-100 transition-all duration-300"
                 >
                   <div className="space-y-1">
                     <Link
@@ -170,8 +171,8 @@ export function DashboardContent({ company, rfqs, user }: DashboardContentProps)
                       )}
                     </div>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <Badge variant="secondary">{rfq.offersCount || 0} предл.</Badge>
+                  <div className="flex items-center gap-3 justify-between md:justify-start w-full md:w-auto mt-4 md:mt-0">
+                    <Badge className={cn(rfq.offersCount || 0 > 0 ? 'bg-green-500' : 'bg-gray-300')} variant="secondary">{rfq.offersCount || 0} предл.</Badge>
                     <Button asChild size="sm" variant="outline">
                       <Link href={`/rfqs/${rfq.id}`}>Открыть</Link>
                     </Button>

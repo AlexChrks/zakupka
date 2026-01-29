@@ -144,7 +144,7 @@ export function MyRFQsList({ initialRFQs }: MyRFQsListProps) {
                   ref={isFirstHighlighted ? highlightedRowRef : undefined}
                   onClick={() => router.push(`/rfqs/${rfq.id}`)}
                   className={cn(
-                    'cursor-pointer transition-shadow hover:shadow-md',
+                    'cursor-pointer transition-shadow hover:shadow-md hover:bg-gray-100 transition-all duration-300',
                     isHighlighted && 'ring-2 ring-blue-500 bg-blue-50 animate-pulse'
                   )}
                 >
@@ -183,7 +183,7 @@ export function MyRFQsList({ initialRFQs }: MyRFQsListProps) {
                           e.stopPropagation()
                           router.push(`/my-rfqs/${rfq.id}/edit`)
                         }}
-                        className="w-full"
+                        className="w-full cursor-pointer"
                       >
                         <Edit className="mr-2 h-4 w-4" />
                         Редактировать
