@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bg" x1="120" y1="90" x2="420" y2="430" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0B2D7A"></stop>
+      <stop offset="1" stop-color="#2F63D6"></stop>
+    </linearGradient>
+
+    <!-- Gloss highlight -->
+    <linearGradient id="gloss" x1="160" y1="120" x2="360" y2="260" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.22"></stop>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop>
+    </linearGradient>
+
+    <!-- Soft shadow -->
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000000" flood-opacity="0.25"></feDropShadow>
+    </filter>
+
+    <!-- Slight icon shadow -->
+    <filter id="iconShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.22"></feDropShadow>
+    </filter>
+
+    <!-- Checkmark gradient -->
+    <linearGradient id="chk" x1="240" y1="210" x2="390" y2="350" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1FB341"></stop>
+      <stop offset="1" stop-color="#F59A18"></stop>
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded square background -->
+  <rect x="40" y="40" width="432" height="432" rx="92" fill="url(#bg)" filter="url(#softShadow)"></rect>
+
+  <!-- Gloss highlight (top-left) -->
+  <path d="M98 108
+           C160 72, 260 64, 350 92
+           C394 106, 420 132, 436 160
+           C410 160, 346 160, 286 176
+           C226 192, 172 224, 132 260
+           C112 222, 98 172, 98 108Z" fill="url(#gloss)"></path>
+
+  <!-- Icon group (folder + paper + check) -->
+  <g filter="url(#iconShadow)" transform="translate(0,0)">
+    <!-- Folder base -->
+    <path d="M164 318
+             C164 292, 184 272, 210 272
+             H302
+             C328 272, 348 292, 348 318
+             V354
+             C348 380, 328 400, 302 400
+             H210
+             C184 400, 164 380, 164 354
+             Z" fill="#0B2E7B"></path>
+
+    <!-- Folder top lip -->
+    <path d="M164 318
+             C168 296, 186 280, 210 280
+             H302
+             C326 280, 344 296, 348 318
+             H240
+             C220 318, 206 312, 194 302
+             C184 294, 176 290, 164 290
+             Z" fill="#0A286C"></path>
+
+    <!-- Paper behind folder -->
+    <path d="M198 154
+             H310
+             C328 154, 342 168, 342 186
+             V292
+             C342 306, 332 318, 318 322
+             H214
+             C202 322, 192 312, 192 300
+             V186
+             C192 168, 206 154, 224 154
+             Z" fill="#FFFFFF"></path>
+
+    <!-- Paper corner cut (navy) -->
+    <path d="M198 154
+             H310
+             C328 154, 342 168, 342 186
+             V206
+             H300
+             C284 206, 272 194, 272 178
+             V154
+             Z" fill="#0B2E7B"></path>
+
+    <!-- Paper lines -->
+    <rect x="218" y="212" width="118" height="18" rx="9" fill="#0B2E7B" opacity="0.92"></rect>
+    <rect x="218" y="248" width="92" height="18" rx="9" fill="#0B2E7B" opacity="0.92"></rect>
+
+    <!-- White outline around folder+paper (like app icon style) -->
+    <path d="M198 154
+             H310
+             C328 154, 342 168, 342 186
+             V292
+             C342 314, 326 330, 304 330
+             H214
+             C196 330, 184 316, 184 298
+             V186
+             C184 168, 198 154, 216 154
+             Z" fill="none" stroke="#FFFFFF" stroke-width="18" stroke-linejoin="round"></path>
+
+    <path d="M164 318
+             C164 292, 184 272, 210 272
+             H302
+             C328 272, 348 292, 348 318
+             V354
+             C348 380, 328 400, 302 400
+             H210
+             C184 400, 164 380, 164 354
+             Z" fill="none" stroke="#FFFFFF" stroke-width="18" stroke-linejoin="round"></path>
+
+    <!-- Checkmark/arrow -->
+    <path d="M224 312
+             L268 356
+             L396 228" fill="none" stroke="url(#chk)" stroke-width="52" stroke-linecap="round" stroke-linejoin="round"></path>
+
+    <!-- Checkmark white border -->
+    <path d="M224 312
+             L268 356
+             L396 228" fill="none" stroke="#FFFFFF" stroke-width="74" stroke-linecap="round" stroke-linejoin="round" opacity="0.98"></path>
+
+    <!-- Re-draw checkmark on top (so gradient stays crisp) -->
+    <path d="M224 312
+             L268 356
+             L396 228" fill="none" stroke="url(#chk)" stroke-width="52" stroke-linecap="round" stroke-linejoin="round"></path>
+  </g>
+</svg>

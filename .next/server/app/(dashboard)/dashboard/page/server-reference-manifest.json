@@ -1,0 +1,65 @@
+{
+  "node": {
+    "007edcd5dea11b8367094c71d75465a8e6441e6609": {
+      "workers": {
+        "app/(dashboard)/dashboard/page": {
+          "moduleId": 76001,
+          "async": false,
+          "exportedName": "logout",
+          "filename": "features/auth/services/auth-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/dashboard/page": "action-browser"
+      },
+      "exportedName": "logout",
+      "filename": "features/auth/services/auth-actions.ts"
+    },
+    "0092e24403f3bf079c74c81e11711261a4f49ab21a": {
+      "workers": {
+        "app/(dashboard)/dashboard/page": {
+          "moduleId": 76001,
+          "async": false,
+          "exportedName": "markOffersSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/dashboard/page": "action-browser"
+      },
+      "exportedName": "markOffersSeenAction",
+      "filename": "features/notification/services/notification-actions.ts"
+    },
+    "0025e4d1123613f9ebe7d0a13fdf158b1b22ebcef8": {
+      "workers": {
+        "app/(dashboard)/dashboard/page": {
+          "moduleId": 76001,
+          "async": false,
+          "exportedName": "markRfqsSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/dashboard/page": "action-browser"
+      },
+      "exportedName": "markRfqsSeenAction",
+      "filename": "features/notification/services/notification-actions.ts"
+    },
+    "005f0954566101cb60efbeac59dcd7307ce617ab83": {
+      "workers": {
+        "app/(dashboard)/dashboard/page": {
+          "moduleId": 76001,
+          "async": false,
+          "exportedName": "markWinsSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/dashboard/page": "action-browser"
+      },
+      "exportedName": "markWinsSeenAction",
+      "filename": "features/notification/services/notification-actions.ts"
+    }
+  },
+  "edge": {}
+}

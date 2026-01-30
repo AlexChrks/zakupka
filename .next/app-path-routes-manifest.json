@@ -1,0 +1,15 @@
+{
+  "/(auth)/login/page": "/login",
+  "/(auth)/register/page": "/register",
+  "/(dashboard)/dashboard/page": "/dashboard",
+  "/(dashboard)/my-deals/page": "/my-deals",
+  "/(dashboard)/my-rfqs/[id]/edit/page": "/my-rfqs/[id]/edit",
+  "/(dashboard)/my-rfqs/new/page": "/my-rfqs/new",
+  "/(dashboard)/my-rfqs/page": "/my-rfqs",
+  "/(dashboard)/rfqs/[id]/page": "/rfqs/[id]",
+  "/(dashboard)/rfqs/page": "/rfqs",
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/icon.svg/route": "/icon.svg",
+  "/page": "/"
+}
