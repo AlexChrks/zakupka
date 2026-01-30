@@ -1,0 +1,49 @@
+---
+deployment:
+  tasks:
+    # Set the deployment path (CHANGE 'username' to your cPanel username)
+    - export DEPLOYPATH=/home/username/public_html/zakupka
+    
+    # Create deployment directory if it doesn't exist
+    - mkdir -p $DEPLOYPATH
+    
+    # Copy Next.js build output
+    - /bin/cp -R .next $DEPLOYPATH
+    
+    # Copy public assets
+    - /bin/cp -R public $DEPLOYPATH
+    
+    # Copy package files
+    - /bin/cp package.json $DEPLOYPATH
+    - /bin/cp package-lock.json $DEPLOYPATH
+    
+    # Copy custom server
+    - /bin/cp server.js $DEPLOYPATH
+    
+    # Copy Next.js config
+    - /bin/cp next.config.ts $DEPLOYPATH
+    
+    # Copy TypeScript config (if needed for runtime)
+    - /bin/cp tsconfig.json $DEPLOYPATH
+    
+    # Copy necessary folders
+    - /bin/cp -R app $DEPLOYPATH
+    - /bin/cp -R components $DEPLOYPATH
+    - /bin/cp -R entities $DEPLOYPATH
+    - /bin/cp -R features $DEPLOYPATH
+    - /bin/cp -R lib $DEPLOYPATH
+    - /bin/cp -R shared $DEPLOYPATH
+    
+    # Copy middleware
+    - /bin/cp middleware.ts $DEPLOYPATH
+    
+    # Install production dependencies (if Node.js is available)
+    - cd $DEPLOYPATH && npm ci --production
+    
+    # Note: Set environment variables in cPanel → Setup Node.js App
+    # Do not hardcode sensitive keys here
+    # Required variables:
+    # - NEXT_PUBLIC_SUPABASE_URL
+    # - NEXT_PUBLIC_SUPABASE_ANON_KEY
+    # - NODE_ENV=production
+    # - PORT=3000

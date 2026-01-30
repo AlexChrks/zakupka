@@ -1,0 +1,46 @@
+---
+# Alternative .cpanel.yml for building on server
+# Use this if you want to build the Next.js app directly on cPanel
+# Rename to .cpanel.yml to use this version
+
+deployment:
+  tasks:
+    # Set the deployment path (CHANGE 'username' to your cPanel username)
+    - export DEPLOYPATH=/home/username/public_html/zakupka
+    
+    # Create deployment directory if it doesn't exist
+    - mkdir -p $DEPLOYPATH
+    
+    # Copy entire project (excluding git and node_modules)
+    - /bin/cp -R app $DEPLOYPATH
+    - /bin/cp -R components $DEPLOYPATH
+    - /bin/cp -R entities $DEPLOYPATH
+    - /bin/cp -R features $DEPLOYPATH
+    - /bin/cp -R lib $DEPLOYPATH
+    - /bin/cp -R shared $DEPLOYPATH
+    - /bin/cp -R public $DEPLOYPATH
+    - /bin/cp package.json $DEPLOYPATH
+    - /bin/cp package-lock.json $DEPLOYPATH
+    - /bin/cp server.js $DEPLOYPATH
+    - /bin/cp next.config.ts $DEPLOYPATH
+    - /bin/cp tsconfig.json $DEPLOYPATH
+    - /bin/cp middleware.ts $DEPLOYPATH
+    - /bin/cp components.json $DEPLOYPATH
+    - /bin/cp postcss.config.mjs $DEPLOYPATH
+    - /bin/cp eslint.config.mjs $DEPLOYPATH
+    
+    # Install ALL dependencies (including devDependencies for build)
+    - cd $DEPLOYPATH && npm ci
+    
+    # Build the Next.js application
+    - cd $DEPLOYPATH && npm run build
+    
+    # Remove devDependencies to save space (optional)
+    # - cd $DEPLOYPATH && npm prune --production
+    
+    # Note: Set environment variables in cPanel → Setup Node.js App
+    # Required variables:
+    # - NEXT_PUBLIC_SUPABASE_URL
+    # - NEXT_PUBLIC_SUPABASE_ANON_KEY  
+    # - NODE_ENV=production
+    # - PORT=3000
