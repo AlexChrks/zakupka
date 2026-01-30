@@ -7,6 +7,7 @@ import {
   getOffersForRFQAction,
   getMyOfferAction,
   getMyOfferedRFQIdsAction,
+  getMyWonRFQIdsAction,
 } from '@/features/offer/services/offer-service'
 import { CreateOfferData } from '@/entities/offer/repo'
 import { OfferWithCompany } from '@/entities/offer/types'
@@ -18,6 +19,7 @@ export const offerKeys = {
   myOffer: (rfqId: string, companyId: string) =>
     [...offerKeys.all, 'my', rfqId, companyId] as const,
   myOfferedRfqs: (companyId: string) => [...offerKeys.all, 'myOfferedRfqs', companyId] as const,
+  myWonRfqs: (companyId: string) => [...offerKeys.all, 'myWonRfqs', companyId] as const,
 }
 
 export function useOffersForRFQ(rfqId: string) {
@@ -40,6 +42,14 @@ export function useMyOfferedRFQIds(companyId: string | undefined) {
   return useQuery({
     queryKey: offerKeys.myOfferedRfqs(companyId || ''),
     queryFn: () => getMyOfferedRFQIdsAction(companyId!),
+    enabled: !!companyId,
+  })
+}
+
+export function useMyWonRFQIds(companyId: string | undefined) {
+  return useQuery({
+    queryKey: offerKeys.myWonRfqs(companyId || ''),
+    queryFn: () => getMyWonRFQIdsAction(companyId!),
     enabled: !!companyId,
   })
 }

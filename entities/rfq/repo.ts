@@ -37,6 +37,7 @@ export interface RFQFilters {
   deadlineBefore?: string
   search?: string
   status?: RFQStatus
+  currentCompanyId?: string // Used to filter out RFQs with winners (except for the winner)
 }
 
 // Categories
@@ -149,7 +150,7 @@ export async function listPublicRFQs(
       *,
       company:companies(id, name, location),
       category:categories(id, name, created_at),
-      offers(count)
+      offers(id, is_selected, company_id)
     `, { count: 'exact' })
     .is('deleted_at', null)
     .eq('status', 'open')
@@ -180,16 +181,35 @@ export async function listPublicRFQs(
 
   if (error) throw error
 
-  const rfqs: RFQWithRelations[] = (rows || []).map((row) => {
+  // Filter out RFQs that have a winner (unless the current company is the winner)
+  const currentCompanyId = filters?.currentCompanyId
+  
+  const filteredRows = (rows || []).filter((row) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const offers = (row as any).offers as Array<{ id: string; is_selected: boolean; company_id: string }> | undefined
+    
+    // Find the winning offer (if any)
+    const winningOffer = offers?.find(o => o.is_selected)
+    
+    // No winner selected - show to everyone
+    if (!winningOffer) return true
+    
+    // Winner selected - only show to the winner
+    return winningOffer.company_id === currentCompanyId
+  })
+
+  const rfqs: RFQWithRelations[] = filteredRows.map((row) => {
     const rfq = rfqFromRow(row as RFQRow)
     return {
       ...rfq,
       company: row.company as RFQWithRelations['company'],
       category: row.category ? categoryFromRow(row.category as CategoryRow) : null,
-      offersCount: row.offers?.[0]?.count || 0,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      offersCount: (row as any).offers?.length || 0,
     }
   })
 
+  // Note: total count might be slightly off due to client-side filtering
   return { rfqs, total: count || 0 }
 }
 

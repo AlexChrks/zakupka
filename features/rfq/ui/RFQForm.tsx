@@ -129,7 +129,7 @@ export function RFQForm({
               control={form.control}
               name="title"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="w-full">
                   <FormLabel>Название *</FormLabel>
                   <FormControl>
                     <Input placeholder="напр., Офисная мебель для нового офиса" {...field} />

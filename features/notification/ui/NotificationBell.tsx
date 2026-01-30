@@ -53,11 +53,11 @@ export function NotificationBell({ userId, isBuyer, isSupplier }: NotificationBe
     // Fetch RFQ IDs with new offers for highlighting
     const supabase = createClient()
     const rfqIds = await getRfqsWithNewOffers(supabase, userId)
-    
+
     await markOffersSeenAction()
     setNewOffers(0)
     setIsOpen(false)
-    
+
     // Navigate with highlight parameter
     const url = rfqIds.length > 0 ? `/my-rfqs?highlight=${rfqIds.join(',')}` : '/my-rfqs'
     router.push(url)
@@ -70,18 +70,21 @@ export function NotificationBell({ userId, isBuyer, isSupplier }: NotificationBe
   }
 
   const handleMarkWinsSeen = async () => {
-    // Fetch RFQ IDs where supplier won for navigation
-    const supabase = createClient()
-    const wonRfqIds = await getWonRfqs(supabase, userId)
-    
-    await markWinsSeenAction()
     setNewWins(0)
     setIsOpen(false)
-    
-    // Navigate to first won RFQ, or to RFQs list if none
-    if (wonRfqIds.length > 0) {
-      router.push(`/rfqs/${wonRfqIds[0]}`)
-    } else {
+
+    try {
+      // Fetch RFQ IDs where supplier won for highlighting
+      const supabase = createClient()
+      const wonRfqIds = await getWonRfqs(supabase, userId)
+
+      // Navigate with highlight parameter
+      const url = wonRfqIds.length > 0 ? `/rfqs?highlight=${wonRfqIds.join(',')}` : '/rfqs'
+      router.push(url)
+
+      await markWinsSeenAction()
+    } catch (error) {
+      console.error('Error handling wins notification:', error)
       router.push('/rfqs')
     }
   }
@@ -139,8 +142,8 @@ export function NotificationBell({ userId, isBuyer, isSupplier }: NotificationBe
                 onClick={handleMarkWinsSeen}
                 className="flex items-start gap-3 p-3 cursor-pointer"
               >
-                <div className="rounded-full bg-yellow-100 p-2">
-                  <Trophy className="h-4 w-4 text-yellow-600" />
+                <div className="rounded-full bg-green-100 p-2">
+                  <Trophy className="h-4 w-4 text-green-600" />
                 </div>
                 <div className="flex-1">
                   <p className="text-sm font-medium">Вы победили!</p>
@@ -148,7 +151,7 @@ export function NotificationBell({ userId, isBuyer, isSupplier }: NotificationBe
                     {newWins} {getWinsWord(newWins)} выбрали ваше предложение
                   </p>
                 </div>
-                <Badge variant="secondary" className="bg-yellow-100 text-yellow-800">{newWins}</Badge>
+                <Badge variant="secondary" className="bg-green-100 text-green-800">{newWins}</Badge>
               </DropdownMenuItem>
             )}
 

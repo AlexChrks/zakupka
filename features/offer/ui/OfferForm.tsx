@@ -47,7 +47,7 @@ export function OfferForm({ rfqId, companyId, defaultValues, onSuccess }: OfferF
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     resolver: zodResolver(offerSchema) as any,
     defaultValues: {
-      price: defaultValues?.price || 0,
+      price: defaultValues?.price ?? undefined,
       currency: defaultValues?.currency || 'BYN',
       deliveryDays: defaultValues?.deliveryDays,
       notes: defaultValues?.notes || '',
@@ -90,7 +90,8 @@ export function OfferForm({ rfqId, companyId, defaultValues, onSuccess }: OfferF
                     min="0"
                     placeholder="0.00"
                     {...field}
-                    onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
+                    value={field.value || ''}
+                    onChange={(e) => field.onChange(e.target.value ? parseFloat(e.target.value) : undefined)}
                   />
                 </FormControl>
                 <FormMessage />
