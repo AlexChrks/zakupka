@@ -102,14 +102,22 @@ export async function getMyDealsAction(): Promise<DealWithDetails[]> {
   }
 
   // Find the first supplier-enabled company
-  const supplierCompany = memberships?.find(
-    (m) => (m.company as { id: string; supplier_enabled: boolean })?.supplier_enabled
-  )?.company as { id: string; supplier_enabled: boolean } | undefined
+  // Handle both array and single object cases from Supabase nested select
+  const supplierCompany = memberships?.find((m) => {
+    const company = Array.isArray(m.company) ? m.company[0] : m.company
+    return (company as unknown as { id: string; supplier_enabled: boolean } | null)?.supplier_enabled
+  })
+  
+  const company = supplierCompany 
+    ? (Array.isArray(supplierCompany.company) ? supplierCompany.company[0] : supplierCompany.company)
+    : undefined
+    
+  const typedCompany = company as unknown as { id: string; supplier_enabled: boolean } | undefined
 
-  if (!supplierCompany) {
+  if (!typedCompany) {
     console.log('No supplier company found for user:', user.id)
     return []
   }
 
-  return getMyWonDeals(supabase, supplierCompany.id)
+  return getMyWonDeals(supabase, typedCompany.id)
 }
