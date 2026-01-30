@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Company } from '@/entities/company/types'
 import { cn } from '@/lib/utils'
-import { LayoutDashboard, FileText, Package, PlusCircle } from 'lucide-react'
+import { LayoutDashboard, FileText, Package, PlusCircle, Trophy } from 'lucide-react'
 
 interface DashboardNavProps {
   company: Company
@@ -24,6 +24,12 @@ export function DashboardNav({ company }: DashboardNavProps) {
       title: 'Запросы',
       href: '/rfqs',
       icon: FileText,
+      show: company.supplierEnabled,
+    },
+    {
+      title: 'Мои сделки',
+      href: '/my-deals',
+      icon: Trophy,
       show: company.supplierEnabled,
     },
     {

@@ -36,7 +36,7 @@ export function RFQDetailContent({
 }: RFQDetailContentProps) {
   const isExpired = new Date(rfq.deadline) < new Date()
   const isOpen = rfq.status === 'open'
-  
+
   // Find the winning offer
   const winningOffer = offers?.find(o => o.isSelected) || null
   const isWinner = winningOffer?.companyId === userCompanyId

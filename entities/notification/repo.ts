@@ -56,7 +56,26 @@ export async function getWonRfqs(
   supabase: SupabaseClient,
   userId: string
 ): Promise<string[]> {
-  const { data, error } = await supabase.rpc('get_won_rfqs', { p_user_id: userId })
+  // Get user's company through company_members
+  const { data: memberships } = await supabase
+    .from('company_members')
+    .select('company_id')
+    .eq('user_id', userId)
+
+  if (!memberships || memberships.length === 0) {
+    return []
+  }
+
+  const companyIds = memberships.map(m => m.company_id)
+
+  // Get RFQ IDs where the user's company's offer was selected
+  const { data, error } = await supabase
+    .from('offers')
+    .select('rfq_id')
+    .in('company_id', companyIds)
+    .eq('is_selected', true)
+    .is('deleted_at', null)
+
   if (error) throw error
-  return (data as { rfq_id: string }[])?.map((row) => row.rfq_id) || []
+  return (data || []).map((row) => row.rfq_id)
 }

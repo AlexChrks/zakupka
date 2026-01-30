@@ -13,7 +13,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet'
-import { Menu, LayoutDashboard, FileText, Package, PlusCircle } from 'lucide-react'
+import { Menu, LayoutDashboard, FileText, Package, PlusCircle, Trophy } from 'lucide-react'
 
 interface MobileNavProps {
   company: Company
@@ -34,6 +34,12 @@ export function MobileNav({ company }: MobileNavProps) {
       title: 'Запросы',
       href: '/rfqs',
       icon: FileText,
+      show: company.supplierEnabled,
+    },
+    {
+      title: 'Мои сделки',
+      href: '/my-deals',
+      icon: Trophy,
       show: company.supplierEnabled,
     },
     {

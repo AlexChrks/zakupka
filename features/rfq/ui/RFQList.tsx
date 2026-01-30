@@ -1,8 +1,9 @@
 'use client'
 
-import { useMemo } from 'react'
+import { useMemo, useEffect, useRef } from 'react'
+import { useSearchParams, useRouter } from 'next/navigation'
 import { usePublicRFQs } from '@/shared/hooks/use-rfqs'
-import { useMyOfferedRFQIds } from '@/shared/hooks/use-offers'
+import { useMyOfferedRFQIds, useMyWonRFQIds } from '@/shared/hooks/use-offers'
 import { useRFQStore } from '@/shared/stores/rfq-store'
 import { useAuthStore } from '@/shared/stores/auth-store'
 import { RFQCard } from './RFQCard'
@@ -16,18 +17,57 @@ interface RFQListProps {
 }
 
 export function RFQList({ initialPage = 1 }: RFQListProps) {
-  const filters = useRFQStore((state) => state.filters)
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const highlightedCardRef = useRef<HTMLDivElement>(null)
+
+  // Get highlighted RFQ IDs from URL (for won RFQs)
+  const highlightParam = searchParams.get('highlight')
+  const highlightedIds = highlightParam ? highlightParam.split(',') : []
+
+  // Scroll to first highlighted card and clear highlight after delay
+  useEffect(() => {
+    if (highlightedIds.length > 0 && highlightedCardRef.current) {
+      highlightedCardRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
+
+      // Clear highlight from URL after 5 seconds
+      const timeout = setTimeout(() => {
+        router.replace('/rfqs', { scroll: false })
+      }, 5000)
+
+      return () => clearTimeout(timeout)
+    }
+  }, [highlightedIds.length, router])
+
+  const storeFilters = useRFQStore((state) => state.filters)
   const currentCompany = useAuthStore((state) => state.currentCompany)
+
+  // Merge store filters with currentCompanyId to filter out RFQs with winners
+  const filters = useMemo(() => ({
+    ...storeFilters,
+    currentCompanyId: currentCompany?.supplierEnabled ? currentCompany.id : undefined,
+  }), [storeFilters, currentCompany])
+
   const { data, isLoading, error, refetch, isFetching } = usePublicRFQs(filters, initialPage)
-  
+
   // Fetch offered RFQ IDs if the user is a supplier
   const { data: offeredRfqIds } = useMyOfferedRFQIds(
     currentCompany?.supplierEnabled ? currentCompany.id : undefined
   )
-  
+
+  // Fetch won RFQ IDs if the user is a supplier
+  const { data: wonRfqIds } = useMyWonRFQIds(
+    currentCompany?.supplierEnabled ? currentCompany.id : undefined
+  )
+
   const offeredRfqIdsSet = useMemo(
     () => new Set(offeredRfqIds || []),
     [offeredRfqIds]
+  )
+
+  const wonRfqIdsSet = useMemo(
+    () => new Set(wonRfqIds || []),
+    [wonRfqIds]
   )
 
   return (
@@ -73,13 +113,22 @@ export function RFQList({ initialPage = 1 }: RFQListProps) {
         </div>
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {data?.rfqs.map((rfq) => (
-            <RFQCard 
-              key={rfq.id} 
-              rfq={rfq} 
-              hasMyOffer={offeredRfqIdsSet.has(rfq.id)}
-            />
-          ))}
+          {data?.rfqs.map((rfq) => {
+            const isHighlighted = highlightedIds.includes(rfq.id)
+            const isFirstHighlighted = isHighlighted && highlightedIds[0] === rfq.id
+            const isWon = wonRfqIdsSet.has(rfq.id)
+
+            return (
+              <RFQCard
+                key={rfq.id}
+                ref={isFirstHighlighted ? highlightedCardRef : undefined}
+                rfq={rfq}
+                hasMyOffer={offeredRfqIdsSet.has(rfq.id)}
+                isHighlighted={isHighlighted}
+                isWon={isWon}
+              />
+            )
+          })}
         </div>
       )}
     </div>

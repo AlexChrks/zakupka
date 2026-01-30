@@ -5,12 +5,12 @@ import { RFQWithRelations } from '@/entities/rfq/types'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { 
-  Trophy, 
-  CheckCircle2, 
-  Building2, 
-  MapPin, 
-  Phone, 
+import {
+  Trophy,
+  CheckCircle2,
+  Building2,
+  MapPin,
+  Phone,
   Mail,
   ArrowRight,
   PartyPopper,
@@ -27,12 +27,12 @@ interface WinnerSectionProps {
   hasOffer: boolean
 }
 
-export function WinnerSection({ 
-  rfq, 
-  winningOffer, 
-  isBuyer, 
+export function WinnerSection({
+  rfq,
+  winningOffer,
+  isBuyer,
   isWinner,
-  hasOffer 
+  hasOffer
 }: WinnerSectionProps) {
   const isCompleted = rfq.status === 'completed'
   const isCancelled = rfq.status === 'cancelled'
@@ -51,13 +51,13 @@ export function WinnerSection({
             <CardTitle>Победитель выбран</CardTitle>
           </div>
           <CardDescription>
-            {isCompleted 
+            {isCompleted
               ? 'Запрос завершён. Свяжитесь с поставщиком для оформления сделки.'
               : 'Вы выбрали победителя. Завершите запрос для фиксации результата.'}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="rounded-lg border bg-background p-4">
+          <div className="rounded-lg border bg-background p-4 w-full">
             <div className="flex items-start justify-between">
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
@@ -86,7 +86,7 @@ export function WinnerSection({
           </div>
 
           {/* Contact information for supplier */}
-          <div className="rounded-lg border border-blue-200 bg-blue-50/50 p-4 dark:border-blue-800 dark:bg-blue-950/20">
+          <div className="rounded-lg border border-blue-200 bg-blue-50/50 p-4 dark:border-blue-800 dark:bg-blue-950/20 w-full">
             <h4 className="font-medium mb-3 flex items-center gap-2">
               <Phone className="h-4 w-4 text-blue-600" />
               Контакты поставщика
@@ -95,7 +95,7 @@ export function WinnerSection({
               const hasContactPhone = winningOffer.company.contactPhone && winningOffer.company.contactPhone.trim() !== ''
               const hasContactEmail = winningOffer.company.contactEmail && winningOffer.company.contactEmail.trim() !== ''
               const hasContactPerson = winningOffer.company.contactPerson && winningOffer.company.contactPerson.trim() !== ''
-              
+
               return (hasContactPhone || hasContactEmail || hasContactPerson) ? (
                 <div className="space-y-2 text-sm">
                   {hasContactPerson && (
@@ -126,7 +126,7 @@ export function WinnerSection({
             })()}
           </div>
 
-          <div className="rounded-lg border border-dashed p-4">
+          <div className="rounded-lg border border-dashed p-4 w-full">
             <h4 className="font-medium mb-2">Следующие шаги:</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li className="flex items-start gap-2">
@@ -159,10 +159,10 @@ export function WinnerSection({
   // Supplier view - they won!
   if (!isBuyer && isWinner && winningOffer) {
     return (
-      <Card className="border-yellow-200 bg-yellow-50/50 dark:border-yellow-800 dark:bg-yellow-950/20">
+      <Card className="border-green-200 bg-green-50/50 dark:border-green-800 dark:bg-green-950/20">
         <CardHeader>
           <div className="flex items-center gap-2">
-            <PartyPopper className="h-5 w-5 text-yellow-500" />
+            <PartyPopper className="h-5 w-5 text-green-500" />
             <CardTitle>Поздравляем! Вы победили!</CardTitle>
           </div>
           <CardDescription>
@@ -195,7 +195,7 @@ export function WinnerSection({
               const hasContactPhone = rfq.company?.contactPhone && rfq.company.contactPhone.trim() !== ''
               const hasContactEmail = rfq.company?.contactEmail && rfq.company.contactEmail.trim() !== ''
               const hasContactPerson = rfq.company?.contactPerson && rfq.company.contactPerson.trim() !== ''
-              
+
               return (hasContactPhone || hasContactEmail || hasContactPerson) ? (
                 <div className="space-y-2 text-sm">
                   {hasContactPerson && rfq.company?.contactPerson && (
@@ -299,7 +299,7 @@ export function WinnerSection({
             <CardTitle className="text-gray-600 dark:text-gray-400">Запрос отменён</CardTitle>
           </div>
           <CardDescription>
-            {isBuyer 
+            {isBuyer
               ? 'Вы отменили этот запрос.'
               : 'Покупатель отменил этот запрос.'}
           </CardDescription>

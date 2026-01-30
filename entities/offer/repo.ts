@@ -245,3 +245,130 @@ export async function getMyOfferedRFQIds(
   if (error) throw error
   return (data || []).map((row) => row.rfq_id)
 }
+
+export async function getMyWonRFQIds(
+  supabase: SupabaseClient,
+  companyId: string
+): Promise<string[]> {
+  const { data, error } = await supabase
+    .from('offers')
+    .select('rfq_id')
+    .eq('company_id', companyId)
+    .eq('is_selected', true)
+    .is('deleted_at', null)
+
+  if (error) throw error
+  return (data || []).map((row) => row.rfq_id)
+}
+
+export interface DealWithDetails {
+  offer: Offer
+  rfq: {
+    id: string
+    title: string
+    description: string | null
+    quantity: string | null
+    budgetMin: number | null
+    budgetMax: number | null
+    deadline: string
+    status: string
+    createdAt: string
+  }
+  buyerCompany: {
+    id: string
+    name: string
+    location: string | null
+    contactPhone: string | null
+    contactEmail: string | null
+    contactPerson: string | null
+  }
+}
+
+export async function getMyWonDeals(
+  supabase: SupabaseClient,
+  companyId: string
+): Promise<DealWithDetails[]> {
+  console.log('Fetching won deals for company:', companyId)
+  
+  const { data, error } = await supabase
+    .from('offers')
+    .select(`
+      *,
+      rfq:rfqs!inner(
+        id,
+        title,
+        description,
+        quantity,
+        budget_min,
+        budget_max,
+        deadline,
+        status,
+        created_at,
+        company:companies(
+          id,
+          name,
+          location,
+          contact_phone,
+          contact_email,
+          contact_person
+        )
+      )
+    `)
+    .eq('company_id', companyId)
+    .eq('is_selected', true)
+    .eq('rfq.status', 'completed')
+    .is('deleted_at', null)
+    .order('updated_at', { ascending: false })
+
+  if (error) {
+    console.error('Error fetching won deals:', error)
+    throw error
+  }
+  
+  console.log('Found won deals:', data?.length || 0)
+
+  return (data || []).map((row) => {
+    const rfqData = row.rfq as {
+      id: string
+      title: string
+      description: string | null
+      quantity: string | null
+      budget_min: number | null
+      budget_max: number | null
+      deadline: string
+      status: string
+      created_at: string
+      company: {
+        id: string
+        name: string
+        location: string | null
+        contact_phone: string | null
+        contact_email: string | null
+        contact_person: string | null
+      }
+    }
+
+    return {
+      offer: offerFromRow(row as OfferRow),
+      rfq: {
+        id: rfqData.id,
+        title: rfqData.title,
+        description: rfqData.description,
+        quantity: rfqData.quantity,
+        budgetMin: rfqData.budget_min,
+        budgetMax: rfqData.budget_max,
+        deadline: rfqData.deadline,
+        status: rfqData.status,
+        createdAt: rfqData.created_at,
+      },
+      buyerCompany: {
+        id: rfqData.company.id,
+        name: rfqData.company.name,
+        location: rfqData.company.location,
+        contactPhone: rfqData.company.contact_phone,
+        contactEmail: rfqData.company.contact_email,
+        contactPerson: rfqData.company.contact_person,
+      },
+    }
+  })
+}
