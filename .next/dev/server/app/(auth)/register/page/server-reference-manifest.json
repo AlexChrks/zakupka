@@ -1,0 +1,35 @@
+{
+  "node": {
+    "401756737882135298e2e32380fd384ff259da2516": {
+      "workers": {
+        "app/(auth)/register/page": {
+          "moduleId": "[project]/.next-internal/server/app/(auth)/register/page/actions.js { ACTIONS_MODULE0 => \"[project]/features/auth/services/auth-actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "register",
+          "filename": "features/auth/services/auth-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(auth)/register/page": "action-browser"
+      },
+      "exportedName": "register",
+      "filename": "features/auth/services/auth-actions.ts"
+    },
+    "4015433ccde8ef7a66c783d5fe0a9cebe6f1f6a075": {
+      "workers": {
+        "app/(auth)/register/page": {
+          "moduleId": "[project]/.next-internal/server/app/(auth)/register/page/actions.js { ACTIONS_MODULE0 => \"[project]/features/auth/services/auth-actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "login",
+          "filename": "features/auth/services/auth-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(auth)/register/page": "action-browser"
+      },
+      "exportedName": "login",
+      "filename": "features/auth/services/auth-actions.ts"
+    }
+  },
+  "edge": {}
+}
