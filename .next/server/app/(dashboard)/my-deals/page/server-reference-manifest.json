@@ -1,6 +1,6 @@
 {
   "node": {
-    "0030cdb69f7dfd323e2f5649774a401519c3daea92": {
+    "00578e44d07cafe823c435e92c2aa5e1abcb65dfc0": {
       "workers": {
         "app/(dashboard)/my-deals/page": {
           "moduleId": 20777,
@@ -15,7 +15,7 @@
       "exportedName": "logout",
       "filename": "features/auth/services/auth-actions.ts"
     },
-    "00cc4219e9d1b79b1d2a47d2189c7e7c221c114f6c": {
+    "004a9b0394278480056d4e6cd14b81ff6e478f4431": {
       "workers": {
         "app/(dashboard)/my-deals/page": {
           "moduleId": 20777,
@@ -30,7 +30,7 @@
       "exportedName": "markOffersSeenAction",
       "filename": "features/notification/services/notification-actions.ts"
     },
-    "00162248db3e7eb120248d0367deddbb3632b386aa": {
+    "00212fcb7190a7379d8c0468f35e224ef86366ac0d": {
       "workers": {
         "app/(dashboard)/my-deals/page": {
           "moduleId": 20777,
@@ -45,7 +45,7 @@
       "exportedName": "markRfqsSeenAction",
       "filename": "features/notification/services/notification-actions.ts"
     },
-    "0031e7a4290e707cb192568cdf45bc3d75534519a0": {
+    "00950f9995f539e6c35059f20bc8ee7732eea1e33b": {
       "workers": {
         "app/(dashboard)/my-deals/page": {
           "moduleId": 20777,
@@ -60,7 +60,7 @@
       "exportedName": "markWinsSeenAction",
       "filename": "features/notification/services/notification-actions.ts"
     },
-    "007ff59d5bafa67e6e0def4d8c459cafd2f8e56216": {
+    "000f98ab160bf4b38bf4878f628365ed218e44b3b4": {
       "workers": {
         "app/(dashboard)/my-deals/page": {
           "moduleId": 20777,
@@ -75,22 +75,7 @@
       "exportedName": "getMyDealsAction",
       "filename": "features/offer/services/offer-service.ts"
     },
-    "4028f8464143a54a19ec5ca9e1ca36a224c44c6cca": {
-      "workers": {
-        "app/(dashboard)/my-deals/page": {
-          "moduleId": 20777,
-          "async": false,
-          "exportedName": "submitOfferAction",
-          "filename": "features/offer/services/offer-service.ts"
-        }
-      },
-      "layer": {
-        "app/(dashboard)/my-deals/page": "rsc"
-      },
-      "exportedName": "submitOfferAction",
-      "filename": "features/offer/services/offer-service.ts"
-    },
-    "40d34389885c4ce2c13ae9ef627afacdd8fbd9601a": {
+    "400202f3ca1ea542dc9a407f8f8c590aa55fc1da10": {
       "workers": {
         "app/(dashboard)/my-deals/page": {
           "moduleId": 20777,
@@ -105,22 +90,7 @@
       "exportedName": "getMyWonRFQIdsAction",
       "filename": "features/offer/services/offer-service.ts"
     },
-    "40d79b1687e1e59e16a15f3c19c4ad5e449a17456b": {
-      "workers": {
-        "app/(dashboard)/my-deals/page": {
-          "moduleId": 20777,
-          "async": false,
-          "exportedName": "getMyOfferedRFQIdsAction",
-          "filename": "features/offer/services/offer-service.ts"
-        }
-      },
-      "layer": {
-        "app/(dashboard)/my-deals/page": "rsc"
-      },
-      "exportedName": "getMyOfferedRFQIdsAction",
-      "filename": "features/offer/services/offer-service.ts"
-    },
-    "40e282fce398c70f811914f1e48ad1666f69c0371a": {
+    "40627cb8f42193ad7a721f8bb124780a8fac058ae9": {
       "workers": {
         "app/(dashboard)/my-deals/page": {
           "moduleId": 20777,
@@ -135,7 +105,37 @@
       "exportedName": "getOffersForRFQAction",
       "filename": "features/offer/services/offer-service.ts"
     },
-    "603904e4ed67dd67e345bb8a576f610c2cc208aeb3": {
+    "40df7dd997af678c7f40b69ed1238d98e33f984887": {
+      "workers": {
+        "app/(dashboard)/my-deals/page": {
+          "moduleId": 20777,
+          "async": false,
+          "exportedName": "submitOfferAction",
+          "filename": "features/offer/services/offer-service.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-deals/page": "rsc"
+      },
+      "exportedName": "submitOfferAction",
+      "filename": "features/offer/services/offer-service.ts"
+    },
+    "40f78960122f7d9453429cdb58b06bb218d888c7b8": {
+      "workers": {
+        "app/(dashboard)/my-deals/page": {
+          "moduleId": 20777,
+          "async": false,
+          "exportedName": "getMyOfferedRFQIdsAction",
+          "filename": "features/offer/services/offer-service.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-deals/page": "rsc"
+      },
+      "exportedName": "getMyOfferedRFQIdsAction",
+      "filename": "features/offer/services/offer-service.ts"
+    },
+    "60ecb9deb571f3ac762a86f1c41d7c881ac31aaee0": {
       "workers": {
         "app/(dashboard)/my-deals/page": {
           "moduleId": 20777,
@@ -150,7 +150,7 @@
       "exportedName": "getMyOfferAction",
       "filename": "features/offer/services/offer-service.ts"
     },
-    "700980e9b9192b8f586d692697a2465de082141d57": {
+    "70f0f38a87b113f346a2755b37bff36f0e545eed6b": {
       "workers": {
         "app/(dashboard)/my-deals/page": {
           "moduleId": 20777,
