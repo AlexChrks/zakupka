@@ -1,0 +1,777 @@
+{
+  "node": {
+    "408ffc88b55db7c0282c27f7a70899b24ef39460c8": {
+      "workers": {
+        "app/(auth)/login/page": {
+          "moduleId": 82393,
+          "async": false,
+          "exportedName": "login",
+          "filename": "features/auth/services/auth-actions.ts"
+        },
+        "app/(auth)/register/page": {
+          "moduleId": 6843,
+          "async": false,
+          "exportedName": "login",
+          "filename": "features/auth/services/auth-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(auth)/login/page": "action-browser",
+        "app/(auth)/register/page": "action-browser"
+      },
+      "filename": "features/auth/services/auth-actions.ts",
+      "exportedName": "login"
+    },
+    "40521c03104b83c230619512ef6a2128ba2f2a02b1": {
+      "workers": {
+        "app/(auth)/login/page": {
+          "moduleId": 82393,
+          "async": false,
+          "exportedName": "register",
+          "filename": "features/auth/services/auth-actions.ts"
+        },
+        "app/(auth)/register/page": {
+          "moduleId": 6843,
+          "async": false,
+          "exportedName": "register",
+          "filename": "features/auth/services/auth-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(auth)/login/page": "action-browser",
+        "app/(auth)/register/page": "action-browser"
+      },
+      "filename": "features/auth/services/auth-actions.ts",
+      "exportedName": "register"
+    },
+    "0030cdb69f7dfd323e2f5649774a401519c3daea92": {
+      "workers": {
+        "app/(dashboard)/dashboard/page": {
+          "moduleId": 76001,
+          "async": false,
+          "exportedName": "logout",
+          "filename": "features/auth/services/auth-actions.ts"
+        },
+        "app/(dashboard)/my-deals/page": {
+          "moduleId": 20777,
+          "async": false,
+          "exportedName": "logout",
+          "filename": "features/auth/services/auth-actions.ts"
+        },
+        "app/(dashboard)/my-rfqs/[id]/edit/page": {
+          "moduleId": 82525,
+          "async": false,
+          "exportedName": "logout",
+          "filename": "features/auth/services/auth-actions.ts"
+        },
+        "app/(dashboard)/my-rfqs/new/page": {
+          "moduleId": 46780,
+          "async": false,
+          "exportedName": "logout",
+          "filename": "features/auth/services/auth-actions.ts"
+        },
+        "app/(dashboard)/my-rfqs/page": {
+          "moduleId": 68094,
+          "async": false,
+          "exportedName": "logout",
+          "filename": "features/auth/services/auth-actions.ts"
+        },
+        "app/(dashboard)/rfqs/[id]/page": {
+          "moduleId": 67285,
+          "async": false,
+          "exportedName": "logout",
+          "filename": "features/auth/services/auth-actions.ts"
+        },
+        "app/(dashboard)/rfqs/page": {
+          "moduleId": 72935,
+          "async": false,
+          "exportedName": "logout",
+          "filename": "features/auth/services/auth-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/dashboard/page": "action-browser",
+        "app/(dashboard)/my-deals/page": "action-browser",
+        "app/(dashboard)/my-rfqs/[id]/edit/page": "action-browser",
+        "app/(dashboard)/my-rfqs/new/page": "action-browser",
+        "app/(dashboard)/my-rfqs/page": "action-browser",
+        "app/(dashboard)/rfqs/[id]/page": "action-browser",
+        "app/(dashboard)/rfqs/page": "action-browser"
+      },
+      "filename": "features/auth/services/auth-actions.ts",
+      "exportedName": "logout"
+    },
+    "00cc4219e9d1b79b1d2a47d2189c7e7c221c114f6c": {
+      "workers": {
+        "app/(dashboard)/dashboard/page": {
+          "moduleId": 76001,
+          "async": false,
+          "exportedName": "markOffersSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        },
+        "app/(dashboard)/my-deals/page": {
+          "moduleId": 20777,
+          "async": false,
+          "exportedName": "markOffersSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        },
+        "app/(dashboard)/my-rfqs/[id]/edit/page": {
+          "moduleId": 82525,
+          "async": false,
+          "exportedName": "markOffersSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        },
+        "app/(dashboard)/my-rfqs/new/page": {
+          "moduleId": 46780,
+          "async": false,
+          "exportedName": "markOffersSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        },
+        "app/(dashboard)/my-rfqs/page": {
+          "moduleId": 68094,
+          "async": false,
+          "exportedName": "markOffersSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        },
+        "app/(dashboard)/rfqs/[id]/page": {
+          "moduleId": 67285,
+          "async": false,
+          "exportedName": "markOffersSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        },
+        "app/(dashboard)/rfqs/page": {
+          "moduleId": 72935,
+          "async": false,
+          "exportedName": "markOffersSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/dashboard/page": "action-browser",
+        "app/(dashboard)/my-deals/page": "action-browser",
+        "app/(dashboard)/my-rfqs/[id]/edit/page": "action-browser",
+        "app/(dashboard)/my-rfqs/new/page": "action-browser",
+        "app/(dashboard)/my-rfqs/page": "action-browser",
+        "app/(dashboard)/rfqs/[id]/page": "action-browser",
+        "app/(dashboard)/rfqs/page": "action-browser"
+      },
+      "filename": "features/notification/services/notification-actions.ts",
+      "exportedName": "markOffersSeenAction"
+    },
+    "00162248db3e7eb120248d0367deddbb3632b386aa": {
+      "workers": {
+        "app/(dashboard)/dashboard/page": {
+          "moduleId": 76001,
+          "async": false,
+          "exportedName": "markRfqsSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        },
+        "app/(dashboard)/my-deals/page": {
+          "moduleId": 20777,
+          "async": false,
+          "exportedName": "markRfqsSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        },
+        "app/(dashboard)/my-rfqs/[id]/edit/page": {
+          "moduleId": 82525,
+          "async": false,
+          "exportedName": "markRfqsSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        },
+        "app/(dashboard)/my-rfqs/new/page": {
+          "moduleId": 46780,
+          "async": false,
+          "exportedName": "markRfqsSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        },
+        "app/(dashboard)/my-rfqs/page": {
+          "moduleId": 68094,
+          "async": false,
+          "exportedName": "markRfqsSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        },
+        "app/(dashboard)/rfqs/[id]/page": {
+          "moduleId": 67285,
+          "async": false,
+          "exportedName": "markRfqsSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        },
+        "app/(dashboard)/rfqs/page": {
+          "moduleId": 72935,
+          "async": false,
+          "exportedName": "markRfqsSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/dashboard/page": "action-browser",
+        "app/(dashboard)/my-deals/page": "action-browser",
+        "app/(dashboard)/my-rfqs/[id]/edit/page": "action-browser",
+        "app/(dashboard)/my-rfqs/new/page": "action-browser",
+        "app/(dashboard)/my-rfqs/page": "action-browser",
+        "app/(dashboard)/rfqs/[id]/page": "action-browser",
+        "app/(dashboard)/rfqs/page": "action-browser"
+      },
+      "filename": "features/notification/services/notification-actions.ts",
+      "exportedName": "markRfqsSeenAction"
+    },
+    "0031e7a4290e707cb192568cdf45bc3d75534519a0": {
+      "workers": {
+        "app/(dashboard)/dashboard/page": {
+          "moduleId": 76001,
+          "async": false,
+          "exportedName": "markWinsSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        },
+        "app/(dashboard)/my-deals/page": {
+          "moduleId": 20777,
+          "async": false,
+          "exportedName": "markWinsSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        },
+        "app/(dashboard)/my-rfqs/[id]/edit/page": {
+          "moduleId": 82525,
+          "async": false,
+          "exportedName": "markWinsSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        },
+        "app/(dashboard)/my-rfqs/new/page": {
+          "moduleId": 46780,
+          "async": false,
+          "exportedName": "markWinsSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        },
+        "app/(dashboard)/my-rfqs/page": {
+          "moduleId": 68094,
+          "async": false,
+          "exportedName": "markWinsSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        },
+        "app/(dashboard)/rfqs/[id]/page": {
+          "moduleId": 67285,
+          "async": false,
+          "exportedName": "markWinsSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        },
+        "app/(dashboard)/rfqs/page": {
+          "moduleId": 72935,
+          "async": false,
+          "exportedName": "markWinsSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/dashboard/page": "action-browser",
+        "app/(dashboard)/my-deals/page": "action-browser",
+        "app/(dashboard)/my-rfqs/[id]/edit/page": "action-browser",
+        "app/(dashboard)/my-rfqs/new/page": "action-browser",
+        "app/(dashboard)/my-rfqs/page": "action-browser",
+        "app/(dashboard)/rfqs/[id]/page": "action-browser",
+        "app/(dashboard)/rfqs/page": "action-browser"
+      },
+      "filename": "features/notification/services/notification-actions.ts",
+      "exportedName": "markWinsSeenAction"
+    },
+    "007ff59d5bafa67e6e0def4d8c459cafd2f8e56216": {
+      "workers": {
+        "app/(dashboard)/my-deals/page": {
+          "moduleId": 20777,
+          "async": false,
+          "exportedName": "getMyDealsAction",
+          "filename": "features/offer/services/offer-service.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-deals/page": "rsc"
+      },
+      "filename": "features/offer/services/offer-service.ts",
+      "exportedName": "getMyDealsAction"
+    },
+    "4028f8464143a54a19ec5ca9e1ca36a224c44c6cca": {
+      "workers": {
+        "app/(dashboard)/my-deals/page": {
+          "moduleId": 20777,
+          "async": false,
+          "exportedName": "submitOfferAction",
+          "filename": "features/offer/services/offer-service.ts"
+        },
+        "app/(dashboard)/rfqs/[id]/page": {
+          "moduleId": 67285,
+          "async": false,
+          "exportedName": "submitOfferAction",
+          "filename": "features/offer/services/offer-service.ts"
+        },
+        "app/(dashboard)/rfqs/page": {
+          "moduleId": 72935,
+          "async": false,
+          "exportedName": "submitOfferAction",
+          "filename": "features/offer/services/offer-service.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-deals/page": "rsc",
+        "app/(dashboard)/rfqs/[id]/page": "action-browser",
+        "app/(dashboard)/rfqs/page": "action-browser"
+      },
+      "filename": "features/offer/services/offer-service.ts",
+      "exportedName": "submitOfferAction"
+    },
+    "40d34389885c4ce2c13ae9ef627afacdd8fbd9601a": {
+      "workers": {
+        "app/(dashboard)/my-deals/page": {
+          "moduleId": 20777,
+          "async": false,
+          "exportedName": "getMyWonRFQIdsAction",
+          "filename": "features/offer/services/offer-service.ts"
+        },
+        "app/(dashboard)/rfqs/[id]/page": {
+          "moduleId": 67285,
+          "async": false,
+          "exportedName": "getMyWonRFQIdsAction",
+          "filename": "features/offer/services/offer-service.ts"
+        },
+        "app/(dashboard)/rfqs/page": {
+          "moduleId": 72935,
+          "async": false,
+          "exportedName": "getMyWonRFQIdsAction",
+          "filename": "features/offer/services/offer-service.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-deals/page": "rsc",
+        "app/(dashboard)/rfqs/[id]/page": "action-browser",
+        "app/(dashboard)/rfqs/page": "action-browser"
+      },
+      "filename": "features/offer/services/offer-service.ts",
+      "exportedName": "getMyWonRFQIdsAction"
+    },
+    "40d79b1687e1e59e16a15f3c19c4ad5e449a17456b": {
+      "workers": {
+        "app/(dashboard)/my-deals/page": {
+          "moduleId": 20777,
+          "async": false,
+          "exportedName": "getMyOfferedRFQIdsAction",
+          "filename": "features/offer/services/offer-service.ts"
+        },
+        "app/(dashboard)/rfqs/[id]/page": {
+          "moduleId": 67285,
+          "async": false,
+          "exportedName": "getMyOfferedRFQIdsAction",
+          "filename": "features/offer/services/offer-service.ts"
+        },
+        "app/(dashboard)/rfqs/page": {
+          "moduleId": 72935,
+          "async": false,
+          "exportedName": "getMyOfferedRFQIdsAction",
+          "filename": "features/offer/services/offer-service.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-deals/page": "rsc",
+        "app/(dashboard)/rfqs/[id]/page": "action-browser",
+        "app/(dashboard)/rfqs/page": "action-browser"
+      },
+      "filename": "features/offer/services/offer-service.ts",
+      "exportedName": "getMyOfferedRFQIdsAction"
+    },
+    "40e282fce398c70f811914f1e48ad1666f69c0371a": {
+      "workers": {
+        "app/(dashboard)/my-deals/page": {
+          "moduleId": 20777,
+          "async": false,
+          "exportedName": "getOffersForRFQAction",
+          "filename": "features/offer/services/offer-service.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-deals/page": "rsc"
+      },
+      "filename": "features/offer/services/offer-service.ts",
+      "exportedName": "getOffersForRFQAction"
+    },
+    "603904e4ed67dd67e345bb8a576f610c2cc208aeb3": {
+      "workers": {
+        "app/(dashboard)/my-deals/page": {
+          "moduleId": 20777,
+          "async": false,
+          "exportedName": "getMyOfferAction",
+          "filename": "features/offer/services/offer-service.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-deals/page": "rsc"
+      },
+      "filename": "features/offer/services/offer-service.ts",
+      "exportedName": "getMyOfferAction"
+    },
+    "700980e9b9192b8f586d692697a2465de082141d57": {
+      "workers": {
+        "app/(dashboard)/my-deals/page": {
+          "moduleId": 20777,
+          "async": false,
+          "exportedName": "selectWinnerAction",
+          "filename": "features/offer/services/offer-service.ts"
+        },
+        "app/(dashboard)/rfqs/[id]/page": {
+          "moduleId": 67285,
+          "async": false,
+          "exportedName": "selectWinnerAction",
+          "filename": "features/offer/services/offer-service.ts"
+        },
+        "app/(dashboard)/rfqs/page": {
+          "moduleId": 72935,
+          "async": false,
+          "exportedName": "selectWinnerAction",
+          "filename": "features/offer/services/offer-service.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-deals/page": "rsc",
+        "app/(dashboard)/rfqs/[id]/page": "action-browser",
+        "app/(dashboard)/rfqs/page": "action-browser"
+      },
+      "filename": "features/offer/services/offer-service.ts",
+      "exportedName": "selectWinnerAction"
+    },
+    "70a55ea85b0d51622eff14240284cbd6789e83861b": {
+      "workers": {
+        "app/(dashboard)/my-rfqs/[id]/edit/page": {
+          "moduleId": 82525,
+          "async": false,
+          "exportedName": "getPublicRFQsAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        },
+        "app/(dashboard)/my-rfqs/new/page": {
+          "moduleId": 46780,
+          "async": false,
+          "exportedName": "getPublicRFQsAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        },
+        "app/(dashboard)/my-rfqs/page": {
+          "moduleId": 68094,
+          "async": false,
+          "exportedName": "getPublicRFQsAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        },
+        "app/(dashboard)/rfqs/[id]/page": {
+          "moduleId": 67285,
+          "async": false,
+          "exportedName": "getPublicRFQsAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        },
+        "app/(dashboard)/rfqs/page": {
+          "moduleId": 72935,
+          "async": false,
+          "exportedName": "getPublicRFQsAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-rfqs/[id]/edit/page": "action-browser",
+        "app/(dashboard)/my-rfqs/new/page": "action-browser",
+        "app/(dashboard)/my-rfqs/page": "action-browser",
+        "app/(dashboard)/rfqs/[id]/page": "action-browser",
+        "app/(dashboard)/rfqs/page": "action-browser"
+      },
+      "filename": "features/rfq/services/rfq-service.ts",
+      "exportedName": "getPublicRFQsAction"
+    },
+    "409e9d3cbb9a0a6f4a7a3ad9c12943b52d702daa89": {
+      "workers": {
+        "app/(dashboard)/my-rfqs/[id]/edit/page": {
+          "moduleId": 82525,
+          "async": false,
+          "exportedName": "getMyRFQsAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        },
+        "app/(dashboard)/my-rfqs/new/page": {
+          "moduleId": 46780,
+          "async": false,
+          "exportedName": "getMyRFQsAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        },
+        "app/(dashboard)/my-rfqs/page": {
+          "moduleId": 68094,
+          "async": false,
+          "exportedName": "getMyRFQsAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        },
+        "app/(dashboard)/rfqs/[id]/page": {
+          "moduleId": 67285,
+          "async": false,
+          "exportedName": "getMyRFQsAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        },
+        "app/(dashboard)/rfqs/page": {
+          "moduleId": 72935,
+          "async": false,
+          "exportedName": "getMyRFQsAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-rfqs/[id]/edit/page": "action-browser",
+        "app/(dashboard)/my-rfqs/new/page": "action-browser",
+        "app/(dashboard)/my-rfqs/page": "action-browser",
+        "app/(dashboard)/rfqs/[id]/page": "action-browser",
+        "app/(dashboard)/rfqs/page": "action-browser"
+      },
+      "filename": "features/rfq/services/rfq-service.ts",
+      "exportedName": "getMyRFQsAction"
+    },
+    "00e2df2f500e7e9e0f3ffc68b9246eb4c73746102f": {
+      "workers": {
+        "app/(dashboard)/my-rfqs/[id]/edit/page": {
+          "moduleId": 82525,
+          "async": false,
+          "exportedName": "getCategoriesAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        },
+        "app/(dashboard)/my-rfqs/new/page": {
+          "moduleId": 46780,
+          "async": false,
+          "exportedName": "getCategoriesAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        },
+        "app/(dashboard)/my-rfqs/page": {
+          "moduleId": 68094,
+          "async": false,
+          "exportedName": "getCategoriesAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        },
+        "app/(dashboard)/rfqs/[id]/page": {
+          "moduleId": 67285,
+          "async": false,
+          "exportedName": "getCategoriesAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        },
+        "app/(dashboard)/rfqs/page": {
+          "moduleId": 72935,
+          "async": false,
+          "exportedName": "getCategoriesAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-rfqs/[id]/edit/page": "action-browser",
+        "app/(dashboard)/my-rfqs/new/page": "action-browser",
+        "app/(dashboard)/my-rfqs/page": "action-browser",
+        "app/(dashboard)/rfqs/[id]/page": "action-browser",
+        "app/(dashboard)/rfqs/page": "action-browser"
+      },
+      "filename": "features/rfq/services/rfq-service.ts",
+      "exportedName": "getCategoriesAction"
+    },
+    "40eebcdf855866dda74710bfbacd2d91d213425598": {
+      "workers": {
+        "app/(dashboard)/my-rfqs/[id]/edit/page": {
+          "moduleId": 82525,
+          "async": false,
+          "exportedName": "createRFQAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        },
+        "app/(dashboard)/my-rfqs/new/page": {
+          "moduleId": 46780,
+          "async": false,
+          "exportedName": "createRFQAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        },
+        "app/(dashboard)/my-rfqs/page": {
+          "moduleId": 68094,
+          "async": false,
+          "exportedName": "createRFQAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        },
+        "app/(dashboard)/rfqs/[id]/page": {
+          "moduleId": 67285,
+          "async": false,
+          "exportedName": "createRFQAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        },
+        "app/(dashboard)/rfqs/page": {
+          "moduleId": 72935,
+          "async": false,
+          "exportedName": "createRFQAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-rfqs/[id]/edit/page": "action-browser",
+        "app/(dashboard)/my-rfqs/new/page": "action-browser",
+        "app/(dashboard)/my-rfqs/page": "action-browser",
+        "app/(dashboard)/rfqs/[id]/page": "action-browser",
+        "app/(dashboard)/rfqs/page": "action-browser"
+      },
+      "filename": "features/rfq/services/rfq-service.ts",
+      "exportedName": "createRFQAction"
+    },
+    "6074965dc83e43c3a18d7024643b8ccb1533dbe0b5": {
+      "workers": {
+        "app/(dashboard)/my-rfqs/[id]/edit/page": {
+          "moduleId": 82525,
+          "async": false,
+          "exportedName": "updateRFQAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        },
+        "app/(dashboard)/my-rfqs/new/page": {
+          "moduleId": 46780,
+          "async": false,
+          "exportedName": "updateRFQAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        },
+        "app/(dashboard)/my-rfqs/page": {
+          "moduleId": 68094,
+          "async": false,
+          "exportedName": "updateRFQAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        },
+        "app/(dashboard)/rfqs/[id]/page": {
+          "moduleId": 67285,
+          "async": false,
+          "exportedName": "updateRFQAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        },
+        "app/(dashboard)/rfqs/page": {
+          "moduleId": 72935,
+          "async": false,
+          "exportedName": "updateRFQAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-rfqs/[id]/edit/page": "action-browser",
+        "app/(dashboard)/my-rfqs/new/page": "action-browser",
+        "app/(dashboard)/my-rfqs/page": "action-browser",
+        "app/(dashboard)/rfqs/[id]/page": "action-browser",
+        "app/(dashboard)/rfqs/page": "action-browser"
+      },
+      "filename": "features/rfq/services/rfq-service.ts",
+      "exportedName": "updateRFQAction"
+    },
+    "604b395d6e2e2e04e709df3c2434bccc36d17cbebf": {
+      "workers": {
+        "app/(dashboard)/my-rfqs/[id]/edit/page": {
+          "moduleId": 82525,
+          "async": false,
+          "exportedName": "updateRFQStatusAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        },
+        "app/(dashboard)/my-rfqs/new/page": {
+          "moduleId": 46780,
+          "async": false,
+          "exportedName": "updateRFQStatusAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        },
+        "app/(dashboard)/my-rfqs/page": {
+          "moduleId": 68094,
+          "async": false,
+          "exportedName": "updateRFQStatusAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        },
+        "app/(dashboard)/rfqs/[id]/page": {
+          "moduleId": 67285,
+          "async": false,
+          "exportedName": "updateRFQStatusAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        },
+        "app/(dashboard)/rfqs/page": {
+          "moduleId": 72935,
+          "async": false,
+          "exportedName": "updateRFQStatusAction",
+          "filename": "features/rfq/services/rfq-service.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-rfqs/[id]/edit/page": "action-browser",
+        "app/(dashboard)/my-rfqs/new/page": "action-browser",
+        "app/(dashboard)/my-rfqs/page": "action-browser",
+        "app/(dashboard)/rfqs/[id]/page": "action-browser",
+        "app/(dashboard)/rfqs/page": "action-browser"
+      },
+      "filename": "features/rfq/services/rfq-service.ts",
+      "exportedName": "updateRFQStatusAction"
+    },
+    "602a0c5465038819a5796589789f4ef5c19498760e": {
+      "workers": {
+        "app/(dashboard)/my-rfqs/[id]/edit/page": {
+          "moduleId": 82525,
+          "async": false,
+          "exportedName": "uploadRFQFileAction",
+          "filename": "features/rfq/services/file-service.ts"
+        },
+        "app/(dashboard)/my-rfqs/new/page": {
+          "moduleId": 46780,
+          "async": false,
+          "exportedName": "uploadRFQFileAction",
+          "filename": "features/rfq/services/file-service.ts"
+        },
+        "app/(dashboard)/rfqs/page": {
+          "moduleId": 72935,
+          "async": false,
+          "exportedName": "uploadRFQFileAction",
+          "filename": "features/rfq/services/file-service.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-rfqs/[id]/edit/page": "action-browser",
+        "app/(dashboard)/my-rfqs/new/page": "action-browser",
+        "app/(dashboard)/rfqs/page": "action-browser"
+      },
+      "filename": "features/rfq/services/file-service.ts",
+      "exportedName": "uploadRFQFileAction"
+    },
+    "60db9aadde4642573e42426b68d679fd7216ea9e7d": {
+      "workers": {
+        "app/(dashboard)/my-rfqs/[id]/edit/page": {
+          "moduleId": 82525,
+          "async": false,
+          "exportedName": "deleteRFQFileAction",
+          "filename": "features/rfq/services/file-service.ts"
+        },
+        "app/(dashboard)/my-rfqs/new/page": {
+          "moduleId": 46780,
+          "async": false,
+          "exportedName": "deleteRFQFileAction",
+          "filename": "features/rfq/services/file-service.ts"
+        },
+        "app/(dashboard)/rfqs/page": {
+          "moduleId": 72935,
+          "async": false,
+          "exportedName": "deleteRFQFileAction",
+          "filename": "features/rfq/services/file-service.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-rfqs/[id]/edit/page": "action-browser",
+        "app/(dashboard)/my-rfqs/new/page": "action-browser",
+        "app/(dashboard)/rfqs/page": "action-browser"
+      },
+      "filename": "features/rfq/services/file-service.ts",
+      "exportedName": "deleteRFQFileAction"
+    },
+    "406cb00bc8b6e310c7c3c23481bc309038608bdc1f": {
+      "workers": {
+        "app/(dashboard)/rfqs/[id]/page": {
+          "moduleId": 67285,
+          "async": false,
+          "exportedName": "getSignedDownloadUrlAction",
+          "filename": "features/rfq/services/file-service.ts"
+        },
+        "app/(dashboard)/rfqs/page": {
+          "moduleId": 72935,
+          "async": false,
+          "exportedName": "getSignedDownloadUrlAction",
+          "filename": "features/rfq/services/file-service.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/rfqs/[id]/page": "action-browser",
+        "app/(dashboard)/rfqs/page": "action-browser"
+      },
+      "filename": "features/rfq/services/file-service.ts",
+      "exportedName": "getSignedDownloadUrlAction"
+    }
+  },
+  "edge": {},
+  "encryptionKey": "PeNVf3Z53S6MyqYD/qtAFOKkw3qBRfZXLdbJnhoGmeY="
+}

@@ -1,0 +1,170 @@
+{
+  "node": {
+    "0030cdb69f7dfd323e2f5649774a401519c3daea92": {
+      "workers": {
+        "app/(dashboard)/my-deals/page": {
+          "moduleId": 20777,
+          "async": false,
+          "exportedName": "logout",
+          "filename": "features/auth/services/auth-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-deals/page": "action-browser"
+      },
+      "exportedName": "logout",
+      "filename": "features/auth/services/auth-actions.ts"
+    },
+    "00cc4219e9d1b79b1d2a47d2189c7e7c221c114f6c": {
+      "workers": {
+        "app/(dashboard)/my-deals/page": {
+          "moduleId": 20777,
+          "async": false,
+          "exportedName": "markOffersSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-deals/page": "action-browser"
+      },
+      "exportedName": "markOffersSeenAction",
+      "filename": "features/notification/services/notification-actions.ts"
+    },
+    "00162248db3e7eb120248d0367deddbb3632b386aa": {
+      "workers": {
+        "app/(dashboard)/my-deals/page": {
+          "moduleId": 20777,
+          "async": false,
+          "exportedName": "markRfqsSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-deals/page": "action-browser"
+      },
+      "exportedName": "markRfqsSeenAction",
+      "filename": "features/notification/services/notification-actions.ts"
+    },
+    "0031e7a4290e707cb192568cdf45bc3d75534519a0": {
+      "workers": {
+        "app/(dashboard)/my-deals/page": {
+          "moduleId": 20777,
+          "async": false,
+          "exportedName": "markWinsSeenAction",
+          "filename": "features/notification/services/notification-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-deals/page": "action-browser"
+      },
+      "exportedName": "markWinsSeenAction",
+      "filename": "features/notification/services/notification-actions.ts"
+    },
+    "007ff59d5bafa67e6e0def4d8c459cafd2f8e56216": {
+      "workers": {
+        "app/(dashboard)/my-deals/page": {
+          "moduleId": 20777,
+          "async": false,
+          "exportedName": "getMyDealsAction",
+          "filename": "features/offer/services/offer-service.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-deals/page": "rsc"
+      },
+      "exportedName": "getMyDealsAction",
+      "filename": "features/offer/services/offer-service.ts"
+    },
+    "4028f8464143a54a19ec5ca9e1ca36a224c44c6cca": {
+      "workers": {
+        "app/(dashboard)/my-deals/page": {
+          "moduleId": 20777,
+          "async": false,
+          "exportedName": "submitOfferAction",
+          "filename": "features/offer/services/offer-service.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-deals/page": "rsc"
+      },
+      "exportedName": "submitOfferAction",
+      "filename": "features/offer/services/offer-service.ts"
+    },
+    "40d34389885c4ce2c13ae9ef627afacdd8fbd9601a": {
+      "workers": {
+        "app/(dashboard)/my-deals/page": {
+          "moduleId": 20777,
+          "async": false,
+          "exportedName": "getMyWonRFQIdsAction",
+          "filename": "features/offer/services/offer-service.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-deals/page": "rsc"
+      },
+      "exportedName": "getMyWonRFQIdsAction",
+      "filename": "features/offer/services/offer-service.ts"
+    },
+    "40d79b1687e1e59e16a15f3c19c4ad5e449a17456b": {
+      "workers": {
+        "app/(dashboard)/my-deals/page": {
+          "moduleId": 20777,
+          "async": false,
+          "exportedName": "getMyOfferedRFQIdsAction",
+          "filename": "features/offer/services/offer-service.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-deals/page": "rsc"
+      },
+      "exportedName": "getMyOfferedRFQIdsAction",
+      "filename": "features/offer/services/offer-service.ts"
+    },
+    "40e282fce398c70f811914f1e48ad1666f69c0371a": {
+      "workers": {
+        "app/(dashboard)/my-deals/page": {
+          "moduleId": 20777,
+          "async": false,
+          "exportedName": "getOffersForRFQAction",
+          "filename": "features/offer/services/offer-service.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-deals/page": "rsc"
+      },
+      "exportedName": "getOffersForRFQAction",
+      "filename": "features/offer/services/offer-service.ts"
+    },
+    "603904e4ed67dd67e345bb8a576f610c2cc208aeb3": {
+      "workers": {
+        "app/(dashboard)/my-deals/page": {
+          "moduleId": 20777,
+          "async": false,
+          "exportedName": "getMyOfferAction",
+          "filename": "features/offer/services/offer-service.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-deals/page": "rsc"
+      },
+      "exportedName": "getMyOfferAction",
+      "filename": "features/offer/services/offer-service.ts"
+    },
+    "700980e9b9192b8f586d692697a2465de082141d57": {
+      "workers": {
+        "app/(dashboard)/my-deals/page": {
+          "moduleId": 20777,
+          "async": false,
+          "exportedName": "selectWinnerAction",
+          "filename": "features/offer/services/offer-service.ts"
+        }
+      },
+      "layer": {
+        "app/(dashboard)/my-deals/page": "rsc"
+      },
+      "exportedName": "selectWinnerAction",
+      "filename": "features/offer/services/offer-service.ts"
+    }
+  },
+  "edge": {}
+}
