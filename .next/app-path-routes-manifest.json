@@ -13,6 +13,7 @@
   "/_not-found/page": "/_not-found",
   "/about/page": "/about",
   "/auth/callback/route": "/auth/callback",
+  "/auth/confirm/route": "/auth/confirm",
   "/icon.svg/route": "/icon.svg",
   "/page": "/"
 }

@@ -13,6 +13,7 @@
   "/_not-found/page": "app/_not-found/page.js",
   "/about/page": "app/about/page.js",
   "/auth/callback/route": "app/auth/callback/route.js",
+  "/auth/confirm/route": "app/auth/confirm/route.js",
   "/icon.svg/route": "app/icon.svg/route.js",
   "/page": "app/page.js"
 }
