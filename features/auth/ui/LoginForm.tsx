@@ -113,6 +113,12 @@ export function LoginForm() {
             Зарегистрироваться
           </Link>
         </div>
+        
+        <div className="mt-2 text-center text-sm">
+          <Link href="/about" className="text-muted-foreground underline-offset-4 hover:underline hover:text-foreground">
+            ← О платформе
+          </Link>
+        </div>
       </CardContent>
     </Card>
   )

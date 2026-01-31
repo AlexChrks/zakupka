@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { useAuthStore } from '@/shared/stores/auth-store'
 import { register, RegisterData } from '../services/auth-actions'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -147,6 +148,12 @@ export function RegisterWizard() {
             isLoading={isLoading}
           />
         )}
+        
+        <div className="mt-6 text-center text-sm">
+          <Link href="/about" className="text-muted-foreground underline-offset-4 hover:underline hover:text-foreground">
+            ← О платформе
+          </Link>
+        </div>
       </CardContent>
     </Card>
   )
