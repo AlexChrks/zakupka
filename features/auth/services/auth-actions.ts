@@ -59,6 +59,9 @@ export interface RegisterData {
 export async function register(data: RegisterData): Promise<RegisterResult> {
   const supabase = await createClient()
 
+  // Get the site URL for email redirect
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+
   // 1. Create auth user
   const { data: authData, error: authError } = await supabase.auth.signUp({
     email: data.email,
@@ -67,6 +70,7 @@ export async function register(data: RegisterData): Promise<RegisterResult> {
       data: {
         full_name: data.fullName,
       },
+      emailRedirectTo: `${siteUrl}/auth/callback`,
     },
   })
 

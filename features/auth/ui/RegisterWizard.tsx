@@ -77,7 +77,7 @@ export function RegisterWizard() {
     }
 
     clearRegistrationData()
-    router.push('/dashboard')
+    router.push('/verify-email')
   }
 
   const handleBack = () => {

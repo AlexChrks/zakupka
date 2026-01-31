@@ -35,6 +35,14 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
+  // Handle auth code on root path - redirect to /auth/callback
+  const code = request.nextUrl.searchParams.get('code')
+  if (code && request.nextUrl.pathname === '/') {
+    const url = request.nextUrl.clone()
+    url.pathname = '/auth/callback'
+    return NextResponse.redirect(url)
+  }
+
   // Protected routes - redirect to login if not authenticated
   const isProtectedRoute =
     request.nextUrl.pathname.startsWith('/dashboard') ||
