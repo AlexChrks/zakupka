@@ -3,7 +3,6 @@
 import { createClient } from '@/shared/lib/supabase/server'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
-import { headers } from 'next/headers'
 
 const TERMS_VERSION = '1.0'
 
@@ -60,13 +59,9 @@ export interface RegisterData {
 export async function register(data: RegisterData): Promise<RegisterResult> {
   const supabase = await createClient()
 
-  // Get the site URL for email redirect from request headers
-  const headersList = await headers()
-  const host = headersList.get('host') || 'localhost:3000'
-  const protocol = headersList.get('x-forwarded-proto') || 'http'
-  const siteUrl = `${protocol}://${host}`
-
   // 1. Create auth user
+  // Note: emailRedirectTo is not needed for email confirmation
+  // The redirect URL is set in the Supabase Email Template using {{ .SiteURL }}
   const { data: authData, error: authError } = await supabase.auth.signUp({
     email: data.email,
     password: data.password,
@@ -74,7 +69,6 @@ export async function register(data: RegisterData): Promise<RegisterResult> {
       data: {
         full_name: data.fullName,
       },
-      emailRedirectTo: `${siteUrl}/auth/callback`,
     },
   })
 
